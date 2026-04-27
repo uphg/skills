@@ -7,7 +7,7 @@
 ## 安装
 
 ```bash
-npx skills add https://github.com/uphg/vue-skills --skill vue-skills
+npx skills add https://github.com/uphg/vue-skills --skill vue-tsx
 ```
 
 ## 使用方法

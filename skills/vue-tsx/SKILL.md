@@ -1,5 +1,5 @@
 ---
-name: vue
+name: vue-tsx
 description: Vue 3 Composition API, defineComponent + TSX, reactivity system, and built-in components. Use when writing Vue components with defineComponent/TSX, watchers, or using Transition/Teleport/Suspense/KeepAlive.
 metadata:
   author: LvHeng

@@ -7,7 +7,7 @@ A curated skill pack for AI coding assistants, providing project-specific knowle
 ## Installation
 
 ```bash
-npx skills add https://github.com/uphg/vue-skills --skill vue-skills
+npx skills add https://github.com/uphg/vue-skills --skill vue-tsx
 ```
 
 ## Usage
