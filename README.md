@@ -1,6 +1,6 @@
-[中文](./README.zh.md)
-
 # vue-skills
+
+English | [中文](./README.zh.md)
 
 A curated skill pack for AI coding assistants, providing project-specific knowledge for **Vue 3** development using **`defineComponent()` + `.tsx`** (Composition API with TSX render functions).
 

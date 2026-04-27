@@ -1,6 +1,6 @@
-[English](./README.md)
-
 # vue-skills
+
+[English](./README.md) | 中文
 
 一个为 AI 编程助手量身定制的技能包，提供 **Vue 3** 使用 **`defineComponent()` + `.tsx`**（Composition API + TSX 渲染函数）开发的项目特定知识。
 
