@@ -14,6 +14,14 @@ Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX r
 npx skills add https://github.com/uphg/skills --skill vue-tsx
 ```
 
+### fsd
+
+Frontend architecture design following Feature-Sliced Design (FSD) methodology.
+
+```bash
+npx skills add https://github.com/uphg/skills --skill fsd
+```
+
 ## Usage
 
 This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.

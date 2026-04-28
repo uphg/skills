@@ -4,7 +4,7 @@
 
 一个为 AI 编程助手量身定制的技能包集合，提供各种框架和工具的项目特定知识。
 
-## 可用技能
+## 可用 skills
 
 ### vue-tsx
 
@@ -12,6 +12,14 @@
 
 ```bash
 npx skills add https://github.com/uphg/skills --skill vue-tsx
+```
+
+### fsd
+
+遵循 Feature-Sliced Design (FSD) 方法论的前端架构设计。
+
+```bash
+npx skills add https://github.com/uphg/skills --skill fsd
 ```
 
 ## 使用方法
