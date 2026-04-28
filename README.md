@@ -1,42 +1,39 @@
-# vue-skills
+# skills
 
 English | [中文](./README.zh.md)
 
-A curated skill pack for AI coding assistants, providing project-specific knowledge for **Vue 3** development using **`defineComponent()` + `.tsx`** (Composition API with TSX render functions).
+A curated collection of skill packs for AI coding assistants, providing project-specific knowledge for various frameworks and tools.
 
-## Installation
+## Available Skills
+
+### vue-tsx
+
+Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
 
 ```bash
-npx skills add https://github.com/uphg/vue-skills --skill vue-tsx
+npx skills add https://github.com/uphg/skills --skill vue-tsx
 ```
 
 ## Usage
 
-This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on Vue 3 + TSX code generation.
+This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.
 
 ## Structure
 
 ```
-skills/vue-tsx/
-├── SKILL.md                          # Main skill definition & coding preferences
-├── GENERATION.md                     # Provenance & generation metadata
-├── CHANGES.md                        # Modification changelog
-└── references/
-    ├── define-component-tsx.md       # defineComponent() + TSX patterns
-    ├── core-new-apis.md              # Reactivity, lifecycle, composables
-    └── advanced-patterns.md          # Built-in components & directives in TSX
+skills/
+└── <skill-name>/
+    ├── SKILL.md                          # Main skill definition & coding preferences
+    ├── GENERATION.md                     # Provenance & generation metadata
+    ├── CHANGES.md                        # Modification changelog
+    └── references/                       # Reference documents
+        └── ...
 ```
 
-## Content
+Each skill resides in its own directory under `skills/`, following the same structure.
 
-- **SKILL.md** — Declares the preferred coding style: TypeScript, `defineComponent()`, `shallowRef`, Composition API, and provides a canonical component template.
-- **define-component-tsx.md** — Covers both function and options signatures, props/emits declarations, generic components, `defineAsyncComponent`, and custom directives in TSX.
-- **core-new-apis.md** — Deep reference on `ref`, `shallowRef`, `computed`, `reactive`, `watch`, `watchEffect`, lifecycle hooks, `effectScope`, and composable patterns.
-- **advanced-patterns.md** — TSX equivalents of `Transition`, `Teleport`, `Suspense`, `KeepAlive`, and custom directives.
+## Contributing
 
-## Origin
-
-Generated from the [official Vue.js documentation](https://github.com/vuejs/docs) using the [skills](https://github.com/antfu/skills) tool, then customized for the `defineComponent()` + `.tsx` workflow.
+Feel free to open issues or pull requests to add new skills or improve existing ones.
 
 **Author:** LvHeng
-**Version:** 2026.4.27
