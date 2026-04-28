@@ -34,6 +34,6 @@ skills/
 
 ## 贡献
 
-欢迎提交 issue 或 pull request 来添加新技能或改进现有技能。
+欢迎提交 issue 或 pull request 来改进现有技能。
 
 **作者：** LvHeng

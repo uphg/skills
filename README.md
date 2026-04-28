@@ -34,6 +34,6 @@ Each skill resides in its own directory under `skills/`, following the same stru
 
 ## Contributing
 
-Feel free to open issues or pull requests to add new skills or improve existing ones.
+Feel free to open issues or pull requests to improve existing skills.
 
 **Author:** LvHeng
