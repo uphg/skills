@@ -30,6 +30,14 @@ Enforces Git commit messages in imperative mood: capitalized first letter, base 
 npx skills add https://github.com/uphg/skills --skill imperative-commits
 ```
 
+### javascript
+
+JavaScript coding conventions: function declaration style, call ordering, event handler naming, and data transformation naming patterns.
+
+```bash
+npx skills add https://github.com/uphg/skills --skill javascript
+```
+
 ## Usage
 
 This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.

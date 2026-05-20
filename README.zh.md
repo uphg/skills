@@ -30,6 +30,14 @@ npx skills add https://github.com/uphg/skills --skill fsd
 npx skills add https://github.com/uphg/skills --skill imperative-commits
 ```
 
+### javascript
+
+JavaScript 编码规范：函数声明方式、调用顺序、事件处理命名以及数据转换命名模式。
+
+```bash
+npx skills add https://github.com/uphg/skills --skill javascript
+```
+
 ## 使用方法
 
 本仓库专为支持"技能包"系统的 AI 编程工具（如 Cursor、Windsurf 等）设计。将 `skills/` 目录指向你的 AI 助手，即可为其提供代码生成的相关语境指导。
