@@ -22,6 +22,14 @@ Frontend architecture design following Feature-Sliced Design (FSD) methodology.
 npx skills add https://github.com/uphg/skills --skill fsd
 ```
 
+### imperative-commits
+
+Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period.
+
+```bash
+npx skills add https://github.com/uphg/skills --skill imperative-commits
+```
+
 ## Usage
 
 This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.

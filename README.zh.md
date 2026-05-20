@@ -22,6 +22,14 @@ npx skills add https://github.com/uphg/skills --skill vue-tsx
 npx skills add https://github.com/uphg/skills --skill fsd
 ```
 
+### imperative-commits
+
+强制 Git 提交信息使用祈使语气：首字母大写、动词原形、不以句号结尾。
+
+```bash
+npx skills add https://github.com/uphg/skills --skill imperative-commits
+```
+
 ## 使用方法
 
 本仓库专为支持"技能包"系统的 AI 编程工具（如 Cursor、Windsurf 等）设计。将 `skills/` 目录指向你的 AI 助手，即可为其提供代码生成的相关语境指导。
