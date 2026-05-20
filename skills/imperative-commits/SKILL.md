@@ -1,6 +1,6 @@
 ---
 name: imperative-commits
-description: Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period. Use when users ask about commit message conventions or want to validate commit quality.
+description: "Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period. Use when users ask about commit message conventions or want to validate commit quality."
 ---
 
 # Imperative Commits
