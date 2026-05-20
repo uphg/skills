@@ -28,7 +28,7 @@ Does your title complete this sentence? *"If applied, this commit will _____"*
 
 ## Not to be confused with
 
-**Conventional Commits** (`feat: add login` — lowercase, has prefix). These can be combined: `feat: Add login` (prefix lowercase, title imperative).
+**Conventional Commits** and imperative commits are distinct conventions — pick one: `feat: add login` (Conventional Commits) or `Add login` (imperative), not both.
 
 ## Quick validation
 

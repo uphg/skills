@@ -28,7 +28,7 @@ description: 强制执行 Git 提交信息的祈使句规范：首字母大写�
 
 ## 与约定式提交的区别
 
-**约定式提交**（Conventional Commits）使用小写和类型前缀：`feat: add login`。两者可以结合使用：`feat: Add login`（前缀小写 + 标题祈使句）。
+约定式提交与祈使句提交是两种不同规范，只能二选一：`feat: add login`（约定式提交）或 `Add login`（祈使句），不可混用
 
 ## 快速检查清单
 
