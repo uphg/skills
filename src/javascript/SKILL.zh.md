@@ -1,6 +1,6 @@
 ---
 name: javascript
-description: JavaScript 编码规范，涵盖函数声明方式（function vs 箭头函数）、函数调用顺序、事件处理函数命名（on[事件]）以及数据转换函数命名模式（to/parse/convert）。在编写 JavaScript 代码、命名函数或设定编码规范时使用。
+description: JavaScript 编码规范，涵盖函数声明方式（function vs 箭头函数）、函数调用顺序、事件处理函数命名（on[事件]）、数据转换函数命名模式（to/parse/convert）以及变量命名模式（is/has 前缀、描述性布尔命名、单复数名词）。在编写 JavaScript 代码、命名函数或设定编码规范时使用。
 metadata:
   author: LvHeng
   version: "2026.5.20"
@@ -72,6 +72,17 @@ function onButtonClick() {}
 - 类型转换 — `to` + 类型：`toNumber()`, `toInt()`, `toPercentage()`
 - 从字符串解析 — `parse` + 类型：`parseInt()`, `parseDate()`
 - 复杂格式转换 — `convert` + 模式：`convertToPascalCase(str)`, `convertUnits(value, from, to)`
+
+### 变量命名
+
+使用前缀和命名模式来明确变量类型与意图：
+
+| 类别 | 约定 | 示例 | 说明 |
+|------|------|------|------|
+| 布尔值 | `is`/`has` 前缀或描述性形容词 | `isLoading`、`hasError`、`modalVisible` | 使用前缀或能自然暗示 true/false 的描述性名称 |
+| 数值/字符串 | `current`/`raw` 前缀 | `currentPage`、`rawText` | `current` 表示状态值，`raw` 表示原始数据 |
+| 数组 | 复数名词 | `users`、`items`、`configs` | 复数形式表示集合 |
+| 单个对象 | 单数名词 | `user`、`item`、`config` | 单数形式表示单个实体 |
 
 ### 避免的命名
 

@@ -1,6 +1,6 @@
 ---
 name: javascript
-description: JavaScript coding conventions covering function declaration style (function vs arrow), function ordering, event handler naming (on[Event]), and data transformation naming patterns (to/parse/convert). Use when writing JavaScript, naming functions, or setting coding standards.
+description: JavaScript coding conventions covering function declaration style (function vs arrow), function ordering, event handler naming (on[Event]), data transformation naming patterns (to/parse/convert), and variable naming patterns (is/has prefix, descriptive booleans, plural/singular nouns). Use when writing JavaScript, naming functions, or setting coding standards.
 metadata:
   author: LvHeng
   version: "2026.5.20"
@@ -72,6 +72,17 @@ function onButtonClick() {}
 - Type conversion — `to` + Type: `toNumber()`, `toInt()`, `toPercentage()`
 - String parsing — `parse` + Type: `parseInt()`, `parseDate()`
 - Complex conversion — `convert` + Pattern: `convertToPascalCase(str)`, `convertUnits(value, from, to)`
+
+### Variable Naming
+
+Use prefixes and naming patterns to make variable types and intent clear:
+
+| Category | Convention | Examples | Notes |
+|----------|-----------|----------|-------|
+| Boolean | `is`/`has` prefix or descriptive adjective | `isLoading`, `hasError`, `modalVisible` | Prefix or descriptive name that naturally implies true/false |
+| Number/String | `current`/`raw` prefix | `currentPage`, `rawText` | `current` for stateful values, `raw` for unprocessed data |
+| Array | Plural noun | `users`, `items`, `configs` | Plural form signals a collection |
+| Single Object | Singular noun | `user`, `item`, `config` | Singular form signals a single entity |
 
 ### Names to Avoid
 
