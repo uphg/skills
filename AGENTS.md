@@ -131,6 +131,7 @@ Line counts and section numbers should match.
 |---|---|---|
 | vue-tsx | Vue 3 Composition API + TSX development | `skills/vue-tsx/` |
 | fsd | Feature-Sliced Design frontend architecture | `skills/fsd/` |
+| vue-component-authoring | Vue component library authoring conventions | `skills/vue-component-authoring/` |
 
 ## Build / Test / Lint
 

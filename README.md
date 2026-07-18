@@ -38,6 +38,14 @@ JavaScript coding conventions: function declaration style, call ordering, event 
 npx skills add https://github.com/uphg/skills --skill javascript
 ```
 
+### vue-component-authoring
+
+Vue 3 component library authoring conventions: directory layout, props/emits/slots/expose API design, callback-props emit pattern, const-array enum governance, side-effect cleanup, attrs passthrough, testing, and hooks/utils organization.
+
+```bash
+npx skills add https://github.com/uphg/skills --skill vue-component-authoring
+```
+
 ## Usage
 
 This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.

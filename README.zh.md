@@ -38,6 +38,14 @@ JavaScript 编码规范：函数声明方式、调用顺序、事件处理命名
 npx skills add https://github.com/uphg/skills --skill javascript
 ```
 
+### vue-component-authoring
+
+Vue 3 组件库组件书写规范：目录结构、props/emits/slots/expose API 设计、callback-props emits 模式、const 数组枚举治理、副作用清理、attrs 透传、测试以及 hooks/utils 组织。
+
+```bash
+npx skills add https://github.com/uphg/skills --skill vue-component-authoring
+```
+
 ## 使用方法
 
 本仓库专为支持"技能包"系统的 AI 编程工具（如 Cursor、Windsurf 等）设计。将 `skills/` 目录指向你的 AI 助手，即可为其提供代码生成的相关语境指导。
