@@ -31,11 +31,10 @@ src/component/<component>/
 ├── utils.ts                   # Component-specific utilities (optional)
 └── tests/
     ├── <Component>.spec.tsx   # Vitest tests
-    ├── ssr.spec.tsx           # SSR compatibility test
     └── __snapshots__/         # Snapshot artifacts
 ```
 
-Component implementation file uses `PascalCase`. Directory uses `kebab-case`. Child components sit at the same level.
+Component implementation file uses `PascalCase`. Directory uses `kebab-case`. Child components sit at the same level. This layout is a reference — adapt it to your project's conventions.
 
 ### Step 2: Define Public Types First
 
@@ -251,20 +250,17 @@ it('should merge disabled prop', () => {
 
 Always `unmount()` after each test case. Use `describe`/`it` blocks. Test all prop variants, emitted events, slot content, and exposed methods.
 
-### Step 11: Follow Coding Style + Lint + Commit
+### Step 11: Follow Naming Conventions + Project Organization
 
-- **Format:** semi: `false`, singleQuote: `true`, printWidth: `80`, trailingComma: `none`
-- **Lint:** `@antfu/eslint-config`
-- **Commits:** Angular-style (`feat(button): add ghost prop`)
-- **Naming:** Semantic prefixes for state; `Ref` suffix only for DOM template refs
-- **Utils:** Keep `src/utils/` flat (no second-level subdirectories)
-- **Hooks:** Organize composables in `src/hooks/` (`useConfig`, `useFormItem`, `useLocale`, etc.)
+- **Naming:** Semantic prefixes for state values; `Ref` suffix only for DOM template refs
+- **Hooks:** Organize composables in `src/hooks/` with `useXxx` naming
+- **Utils:** Keep shared utilities in `src/utils/`
 
 ## Reference Files
 
 | Topic | Description | File |
 |---|---|---|
-| Project Layout | Directory tree, hooks/utils org, coding style | [project-layout](references/project-layout.md) |
+| Project Layout | Directory tree, hooks/utils org | [project-layout](references/project-layout.md) |
 | Component Template | Full `defineComponent` + setup + render fn | [component-template](references/component-template.md) |
 | API Design | Props, types/enums, emits, slots, expose in depth | [api-design](references/api-design.md) |
 | Testing & Lifecycle | Side-effect cleanup, attrs passthrough, test patterns | [testing-and-lifecycle](references/testing-and-lifecycle.md) |
@@ -276,13 +272,12 @@ Always `unmount()` after each test case. Use `describe`/`it` blocks. Test all pr
 - Do NOT use the `Ref` suffix for anything other than DOM template refs
 - Do NOT leave side effects (timers, listeners, watchers) without cleanup
 - Do NOT forget `{...attrs}` on the root element
-- Do NOT create second-level subdirectories inside `src/utils/` — keep it flat
 - Do NOT place business logic or business types in shared/general utilities
 
 ## When Unsure
 
 - If unsure whether to use a const array or literal union type → prefer const array with `as const` + derived union type
-- If unsure where a utility function belongs → default to `src/utils/` (flat)
+- If unsure where a utility function belongs → default to `src/utils/`
 - If unsure about slot typing → always define the slot interface, even for `default` slot
 - If unsure about composable placement → put it in `src/hooks/`
 - If unsure about exposes → prefer explicit `expose()` over relying on implicit fallthrough

@@ -42,3 +42,16 @@
 - `references/api-design.md` / `.zh.md` — Emits 章节
 - `references/component-template.md` / `.zh.md` — 基础模板
 - `CHANGES.md` — 本文件
+
+---
+
+## 2026-07-19 — 精简规范：移除过于死板的限制
+
+放宽目录结构为参考布局（非强制），移除 lint/format/commit 等与组件编写无关的编码风格条目，SSR 测试改为条件性要求，去掉 `src/utils/` 扁平化强制约束。
+
+### 修改文件清单
+
+- `SKILL.md` / `SKILL.zh.md` — 主文档 Step 1、Step 11、Prohibitions、When Unsure
+- `references/project-layout.md` / `.zh.md` — 移除具体文件列表和编码风格表格
+- `references/testing-and-lifecycle.md` / `.zh.md` — SSR 测试改为条件性要求
+- `CHANGES.md` — 本文件

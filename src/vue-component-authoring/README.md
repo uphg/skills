@@ -45,8 +45,6 @@ src/component/<component>/
 
 - 定义为独立的 `const` 对象，以 `as const` 结尾。
 - 枚举类型**推荐使用常量数组衍生**（详见第 4 节）。
-- v-model 的同时提供 `onUpdateValue` 属性。
-- v-model 始终使用具名响应式，如  `'onUpdate:value'`，而不是默认的 `'onUpdate:model-value'`
 
 ```ts
 // src/button/src/Button.tsx
@@ -60,11 +58,6 @@ export const buttonProps = {
   type: { type: String as PropType<ButtonType>, default: 'default' },
   size: { type: String as PropType<ButtonSize>, default: 'medium' },
 
-  // 函数 / 多回调
-  onClick: [Function, Array] as PropType<MaybeArray<(e: MouseEvent) => void>>,
-
-  // v-model:value
-  onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
 } as const
 ```
 
@@ -82,7 +75,6 @@ export const buttonProps = {
 // src/button/src/Button.tsx
 import { defineComponent, computed, ref, toRefs } from 'vue'
 import { useConfig, useFormItem } from '../../_mixins'
-import { call } from '../../_utils/vue/call'
 import { buttonProps } from './props'
 
 export default defineComponent({
@@ -93,7 +85,7 @@ export default defineComponent({
   props: buttonProps,
   slots: Object as SlotsType<ButtonSlots>,
 
-  setup(props, { slots, attrs, expose }) {
+  setup(props, { emit, slots, attrs, expose }) {
     // ===== DOM 引用（唯一带 Ref 后缀） =====
     const selfElRef = ref<HTMLElement | null>(null)
 
@@ -106,11 +98,12 @@ export default defineComponent({
     const currentSize = computed(() => props.size || 'medium')
 
     // ===== 副作用执行 =====
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
+
     function doUpdateValue(val: string) {
-      const { onUpdateValue } = props
-      // 1) 官方 emit（kebab-case）
       emit('update:value', val)
-      if (onUpdateValue) call(onUpdateValue, val)
     }
 
     // ===== 暴露实例方法 =====
@@ -175,23 +168,37 @@ export interface InputSlots {
 
 ## 5. Emits 规范
 
-**不使用 `emits` 选项**，全部通过 Props 传递回调，使用 `call()` 工具调用。
-
-- 同时支持数组和单个函数。
-- v-model 双形式（`onUpdateValue` 和 `'onUpdate:value'`）均需调用。
+使用 `emits` 选项声明事件，通过 setup 上下文中的 `emit()` 进行分发：
 
 ```ts
-// 声明
-onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
-'onUpdate:value': [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
+// 组件声明
+export default defineComponent({
+  name: 'Button',
+  props: buttonProps,
+  emits: {
+    click: (e: MouseEvent) => true,
+    'update:value': (val: any) => true,
+  },
+  slots: Object as SlotsType<ButtonSlots>,
+  setup(props, { emit, slots, attrs, expose }) {
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
 
-// 调用
-function doUpdateValue(val: string) {
-  const { onUpdateValue, 'onUpdate:value': _onUpdateValue } = props
-  if (onUpdateValue) call(onUpdateValue, val)
-  if (_onUpdateValue) call(_onUpdateValue, val)
-}
+    function doUpdateValue(val: string) {
+      emit('update:value', val)
+    }
+
+    return () => (
+      <div onClick={handleClick}>
+        {/* 内容 */}
+      </div>
+    )
+  },
+})
 ```
+
+`emits` 选项接受事件名称数组或带校验函数的对象。使用对象形式进行运行时验证。父组件通过 `@click` / `@update:value` 或 `v-model:value` 监听。
 
 ---
 
@@ -358,7 +365,6 @@ it('should merge disabled prop', () => {
   - 以及自定义的 `useDeferredTrue`、`useResize` 等
 
 - **`src/utils/`**：存放内部工具函数，不再细分二级目录，按功能直接导出：
-  - `call.ts`：安全调用回调
   - `createInjectionKey.ts`：创建注入键
   - `resolveSlot.ts` / `resolveWrappedSlot.ts` / `isSlotEmpty.ts`
   - `omit.ts` / `keep.ts` 等对象工具

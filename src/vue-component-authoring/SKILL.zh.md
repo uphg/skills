@@ -31,11 +31,10 @@ src/component/<component>/
 ├── utils.ts                   # 组件专用工具函数（可选）
 └── tests/
     ├── <Component>.spec.tsx   # Vitest 测试
-    ├── ssr.spec.tsx           # SSR 兼容测试
     └── __snapshots__/         # 快照产物
 ```
 
-组件实现文件使用 `PascalCase`，目录使用 `kebab-case`，子组件同级放置。
+组件实现文件使用 `PascalCase`，目录使用 `kebab-case`，子组件同级放置。此布局仅供参考——可根据项目惯例调整。
 
 ### 步骤 2：先定义公开类型
 
@@ -251,20 +250,17 @@ it('should merge disabled prop', () => {
 
 每个测试用例后必须 `unmount()`。使用 `describe`/`it` 块。测试所有 prop 变体、触发事件、slot 内容和暴露方法。
 
-### 步骤 11：遵循编码风格 + Lint + Commit
+### 步骤 11：遵循命名约定 + 项目组织
 
-- **格式：** `semi: false`、`singleQuote: true`、`printWidth: 80`、`trailingComma: none`
-- **Lint：** `@antfu/eslint-config`
-- **提交：** Angular 风格（`feat(button): add ghost prop`）
 - **命名：** 状态值使用语义前缀；`Ref` 后缀仅用于 DOM 模板引用
-- **工具函数：** 保持 `src/utils/` 扁平化（无二级子目录）
-- **组合式函数：** 组织在 `src/hooks/` 中（`useConfig`、`useFormItem`、`useLocale` 等）
+- **组合式函数：** 组织在 `src/hooks/` 中，使用 `useXxx` 命名
+- **工具函数：** 放置在 `src/utils/` 中
 
 ## 参考文件
 
 | 主题 | 说明 | 文件 |
 |---|---|---|
-| 项目结构 | 目录树、hooks/utils 组织、编码风格 | [project-layout](references/project-layout.zh.md) |
+| 项目结构 | 目录树、hooks/utils 组织 | [project-layout](references/project-layout.zh.md) |
 | 组件模板 | 完整的 defineComponent + setup + 渲染函数 | [component-template](references/component-template.zh.md) |
 | API 设计 | Props、类型/枚举、Emits、Slots、Expose 详解 | [api-design](references/api-design.zh.md) |
 | 测试与生命周期 | 副作用清理、attrs 透传、测试模式 | [testing-and-lifecycle](references/testing-and-lifecycle.zh.md) |
@@ -276,13 +272,12 @@ it('should merge disabled prop', () => {
 - 禁止在非 DOM 模板引用上使用 `Ref` 后缀
 - 禁止遗留未清理的副作用（定时器、监听器、watch）
 - 禁止忘记在根元素上使用 `{...attrs}`
-- 禁止在 `src/utils/` 内创建二级子目录——保持扁平化
 - 禁止在通用工具函数中放置业务逻辑或业务类型
 
 ## 不确定时
 
 - 不确定使用 const 数组还是字面量联合类型 → 优先使用带有 `as const` 的 const 数组 + 衍生联合类型
-- 不确定工具函数归属 → 默认放入 `src/utils/`（扁平）
+- 不确定工具函数归属 → 默认放入 `src/utils/`
 - 不确定 slot 类型 → 始终定义 slot 接口，即使是 `default` slot
 - 不确定组合式函数放置位置 → 放入 `src/hooks/`
 - 不确定 expose 内容 → 优先显式 `expose()`，而不是依赖隐式透传

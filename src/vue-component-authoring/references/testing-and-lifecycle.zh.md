@@ -89,9 +89,9 @@ describe('n-button', () => {
   })
 
   it('should emit click event', () => {
-    const wrapper = mount(NButton, { props: { onClick: vi.fn() } })
+    const wrapper = mount(NButton)
     wrapper.trigger('click')
-    expect(wrapper.props().onClick).toHaveBeenCalled()
+    expect(wrapper.emitted('click')).toHaveLength(1)
     wrapper.unmount()
   })
 
@@ -103,7 +103,7 @@ describe('n-button', () => {
 })
 ```
 
-**SSR 兼容：**
+**SSR 兼容（若组件库需要支持 SSR）：**
 
 ```ts
 // tests/ssr.spec.tsx
@@ -158,7 +158,7 @@ it('useFormItem should return disabled from injection', () => {
 
 **覆盖范围：**
 - 测试所有 prop 变体（尤其是基于枚举的 props——遍历 const 数组）
-- 测试触发事件 / 回调调用
+- 测试触发事件
 - 测试 slot 渲染（default slots、命名 slots、作用域 slots）
 - 测试暴露的实例方法
 - 测试边界情况（空/null/undefined props、边界值）

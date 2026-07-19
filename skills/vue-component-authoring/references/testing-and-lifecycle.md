@@ -89,9 +89,9 @@ describe('n-button', () => {
   })
 
   it('should emit click event', () => {
-    const wrapper = mount(NButton, { props: { onClick: vi.fn() } })
+    const wrapper = mount(NButton)
     wrapper.trigger('click')
-    expect(wrapper.props().onClick).toHaveBeenCalled()
+    expect(wrapper.emitted('click')).toHaveLength(1)
     wrapper.unmount()
   })
 
@@ -103,7 +103,7 @@ describe('n-button', () => {
 })
 ```
 
-**SSR compatibility:**
+**SSR compatibility (if the library supports SSR):**
 
 ```ts
 // tests/ssr.spec.tsx
@@ -158,7 +158,7 @@ it('useFormItem should return disabled from injection', () => {
 
 **Coverage:**
 - Test all prop variants (especially enum-based props — iterate the const array)
-- Test emitted events / callback invocation
+- Test emitted events
 - Test slot rendering (default slots, named slots, scoped slots)
 - Test exposed instance methods
 - Test edge cases (empty/null/undefined props, boundary values)
