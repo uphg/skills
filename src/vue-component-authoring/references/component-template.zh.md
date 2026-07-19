@@ -11,18 +11,18 @@ description: Vue 3 组件库组件的完整 defineComponent + setup 模板及渲
 // src/button/src/Button.tsx
 import { defineComponent, computed, ref, toRefs } from 'vue'
 import { useConfig, useFormItem } from '../../_mixins'
-import { call } from '../../_utils/vue/call'
 import { buttonProps } from './props'
 
 export default defineComponent({
   name: 'Button',
+  props: buttonProps,
   emits: {
+    click: (e: MouseEvent) => true,
     'update:value': (val: any) => true,
   },
-  props: buttonProps,
   slots: Object as SlotsType<ButtonSlots>,
 
-  setup(props, { slots, attrs, expose }) {
+  setup(props, { emit, slots, attrs, expose }) {
     // ===== DOM 引用（唯一带 Ref 后缀） =====
     const selfElRef = ref<HTMLElement | null>(null)
 
@@ -35,10 +35,13 @@ export default defineComponent({
     const currentSize = computed(() => props.size || 'medium')
 
     // ===== 副作用执行 =====
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
+
     function doUpdateValue(val: string) {
-      const { onUpdateValue } = props
       emit('update:value', val)
-      if (onUpdateValue) call(onUpdateValue, val)
+      props.onUpdateValue?.(val)
     }
 
     // ===== 暴露实例方法 =====

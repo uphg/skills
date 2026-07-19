@@ -19,20 +19,12 @@ export const buttonProps = {
   tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'button' },
   type: { type: String as PropType<ButtonType>, default: 'default' },
   size: { type: String as PropType<ButtonSize>, default: 'medium' },
-
-  // Function / multiple callbacks
-  onClick: [Function, Array] as PropType<MaybeArray<(e: MouseEvent) => void>>,
-
-  // v-model:value
-  onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
 } as const
 ```
 
 **Rules:**
 - Always end with `as const` for type narrowing
-- v-model provides both `onUpdateValue` and `'onUpdate:value'` (kebab-case)
 - Use `PropType` for all non-primitive types
-- Use `MaybeArray<T>` to accept single function or array of functions
 
 ## Types & Enums
 
@@ -55,38 +47,47 @@ export type ButtonVariant = typeof buttonVariants[number]
 - `as const` gives full type narrowing
 - Can be used in `v-for`, filtering, validation
 
-## Emits (Callback-Props Pattern)
+## Emits
 
-**Do NOT use the `emits` option** for dispatching. All callbacks come through props:
-
-```ts
-// Declaration (in props)
-onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
-'onUpdate:value': [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
-
-// Invocation
-function doUpdateValue(val: string) {
-  const { onUpdateValue, 'onUpdate:value': _onUpdateValue } = props
-  if (onUpdateValue) call(onUpdateValue, val)
-  if (_onUpdateValue) call(_onUpdateValue, val)
-}
-```
-
-The `emits` option on the component serves **only for runtime validation** — actual dispatch goes through props callbacks. Use the `call()` utility to safely invoke single-function or array-of-functions:
+Declare events using the `emits` option on the component and dispatch through `emit()` from the setup context. For `update:xxx` v-model events, add a corresponding callback prop (e.g., `onUpdateValue` for `update:value`) so parents can listen in JSX:
 
 ```ts
-// src/utils/call.ts
-export function call<T extends (...args: any[]) => any>(
-  fns: T | T[],
-  ...args: Parameters<T>
-): void {
-  if (Array.isArray(fns)) {
-    fns.forEach(fn => fn(...args))
-  } else {
-    fns(...args)
-  }
-}
+// Component declaration
+export default defineComponent({
+  name: 'Button',
+  props: buttonProps,
+  emits: {
+    click: (e: MouseEvent) => true,
+    'update:value': (val: any) => true,
+  },
+  slots: Object as SlotsType<ButtonSlots>,
+  setup(props, { emit, slots, attrs, expose }) {
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
+
+    function doUpdateValue(val: string) {
+      emit('update:value', val)
+      props.onUpdateValue?.(val)
+    }
+
+    return () => (
+      <div onClick={handleClick}>
+        {/* content */}
+      </div>
+    )
+  },
+})
 ```
+
+The `emits` option accepts an array of event names or an object with validator functions. Use the object form for runtime validation. Callback props like `onUpdateValue` allow parents to listen in JSX via `onUpdateValue={handler}`, equivalent to `@update:value` in templates.
+
+**Rules:**
+- Always declare events in the `emits` option to document the component's event interface
+- Use the object form with validators for better runtime diagnostics
+- For `update:xxx` v-model events, add a matching callback prop in `props` (e.g., `onUpdateValue` for `update:value`)
+- Dispatch events through the `emit` function from setup parameters, then call the corresponding callback prop
+- v-model:value events use the `'update:value'` event name
 
 ## Slots
 

@@ -40,7 +40,7 @@ npx skills add https://github.com/uphg/skills --skill javascript
 
 ### vue-component-authoring
 
-Vue 3 组件库组件书写规范：目录结构、props/emits/slots/expose API 设计、callback-props emits 模式、const 数组枚举治理、副作用清理、attrs 透传、测试以及 hooks/utils 组织。
+Vue 3 组件库组件书写规范：目录结构、props/emits/slots/expose API 设计、emits + callback props for JSX、const 数组枚举治理、副作用清理、attrs 透传、测试以及 hooks/utils 组织。
 
 ```bash
 npx skills add https://github.com/uphg/skills --skill vue-component-authoring

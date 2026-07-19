@@ -1,6 +1,6 @@
 ---
 name: vue-component-authoring
-description: "Vue 3 component library authoring conventions. Use when building reusable components for a Vue component library (Button, Input, Dialog, Select, etc.). Covers directory layout, props/emits/slots/expose API design, callback-props emit pattern with call() helper, const-array enum governance, SlotsType typing, expose + XxxInst interface, side-effect cleanup, attrs passthrough, Vitest + @vue/test-utils testing, src/hooks + src/utils organization, and coding style (lint, format, commit conventions). Uses defineComponent + TSX. Not for one-off app components (use vue-tsx) or styling/theme decisions."
+description: "Vue 3 component library authoring conventions. Use when building reusable components for a Vue component library (Button, Input, Dialog, Select, etc.). Covers directory layout, props/emits/slots/expose API design, emits option + emit() dispatch with callback props for JSX, const-array enum governance, SlotsType typing, expose + XxxInst interface, side-effect cleanup, attrs passthrough, Vitest + @vue/test-utils testing, src/hooks + src/utils organization, and coding style (lint, format, commit conventions). Uses defineComponent + TSX. Not for one-off app components (use vue-tsx) or styling/theme decisions."
 ---
 
 # Vue Component Library Style Guide
@@ -70,12 +70,11 @@ export const buttonProps = {
   tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'button' },
   type: { type: String as PropType<ButtonType>, default: 'default' },
   size: { type: String as PropType<ButtonSize>, default: 'medium' },
-  onClick: [Function, Array] as PropType<MaybeArray<(e: MouseEvent) => void>>,
-  onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
+  onUpdateValue: Function as PropType<(value: string) => void>,
 } as const
 ```
 
-Props object is reusable across tests and documentation. Always end with `as const`. v-model provides both `onUpdateValue` and `'onUpdate:value'`. Use `PropType` for complex types.
+Props object is reusable across tests and documentation. Always end with `as const`. Use `PropType` for complex types.
 
 ### Step 4: Implement with `defineComponent` + Setup Returning a Render Function
 
@@ -85,10 +84,15 @@ export default defineComponent({
   emits: { 'update:value': (val: any) => true },
   props: buttonProps,
   slots: Object as SlotsType<ButtonSlots>,
-  setup(props, { slots, attrs, expose }) {
+  setup(props, { emit, slots, attrs, expose }) {
     // All logic in closure — no `this`
     const selfElRef = ref<HTMLElement | null>(null)
     const isDisabled = computed(() => props.disabled || false)
+
+    function doUpdateValue(value: string) {
+      emit('update:value', value)
+      props.onUpdateValue?.(value)
+    }
     // ...
     return () => {
       return <div ref={selfElRef}>{/* ... */}</div>
@@ -101,21 +105,39 @@ Always use `defineComponent` with Options API wrapper + Composition API setup bo
 
 Do not destructure props — use `props.xxx` or `toRefs`. Name DOM template refs with `Ref` suffix (`selfElRef`). Use semantic prefixes for computed/state values.
 
-### Step 5: Wire Emits via Callback Props + `call()` Helper
+### Step 5: Declare Events via `emits` + Dispatch via `emit()` with Callback Props
 
-Do NOT use the `emits` option. Receive callbacks through props and dispatch through the `call()` helper:
+Declare events using the `emits` option and dispatch them through `emit()` from the setup context. For `update:xxx` v-model events, add a corresponding callback prop (e.g., `onUpdateValue` for `update:value`) so parents can listen in JSX:
 
 ```ts
-import { call } from '../../_utils/vue/call'
+export default defineComponent({
+  name: 'Button',
+  props: buttonProps,
+  emits: {
+    click: (e: MouseEvent) => true,
+    'update:value': (val: any) => true,
+  },
+  slots: Object as SlotsType<ButtonSlots>,
+  setup(props, { emit, slots, attrs, expose }) {
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
 
-function doUpdateValue(val: string) {
-  const { onUpdateValue, 'onUpdate:value': _onUpdateValue } = props
-  if (onUpdateValue) call(onUpdateValue, val)
-  if (_onUpdateValue) call(_onUpdateValue, val)
-}
+    function doUpdateValue(val: string) {
+      emit('update:value', val)
+      props.onUpdateValue?.(val)
+    }
+
+    return () => (
+      <div onClick={handleClick}>
+        {/* content */}
+      </div>
+    )
+  },
+})
 ```
 
-Support both single-function and array-of-functions through `MaybeArray`. The `emits` option serves only for validation; actual emit dispatch goes through props callbacks.
+The `emits` option accepts an array of event names or an object with validator functions. Use the object form for runtime validation. Callback props like `onUpdateValue` allow parents to listen in JSX via `onUpdateValue={handler}`, equivalent to `@update:value` in templates.
 
 ### Step 6: Type and Resolve Slots with `SlotsType` + Slot Helpers
 
@@ -251,7 +273,6 @@ Always `unmount()` after each test case. Use `describe`/`it` blocks. Test all pr
 
 - Do NOT use `this` inside `setup`
 - Do NOT destructure props directly (`const { size } = props`) — use `props.xxx` or `toRefs`
-- Do NOT use the `emits` option for dispatching — use callback props + `call()` helper
 - Do NOT use the `Ref` suffix for anything other than DOM template refs
 - Do NOT leave side effects (timers, listeners, watchers) without cleanup
 - Do NOT forget `{...attrs}` on the root element

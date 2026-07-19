@@ -1,6 +1,6 @@
 ---
 name: vue-component-authoring
-description: "Vue 3 组件库组件书写规范。适用于构建 Vue 组件库的可复用组件（Button、Input、Dialog、Select 等）。涵盖目录结构、props/emits/slots/expose API 设计、callback-props emits 模式与 call() 辅助函数、const 数组枚举治理、SlotsType 类型声明、expose + XxxInst 接口、副作用清理、attrs 透传、Vitest + @vue/test-utils 测试、src/hooks + src/utils 组织方式以及编码风格（lint、format、commit 规范）。使用 defineComponent + TSX。不适用于一次性应用组件（使用 vue-tsx）或样式/主题决策。"
+description: "Vue 3 组件库组件书写规范。适用于构建 Vue 组件库的可复用组件（Button、Input、Dialog、Select 等）。涵盖目录结构、props/emits/slots/expose API 设计、emits 选项 + emit() 分发 + 用于 JSX 的 callback props、const 数组枚举治理、SlotsType 类型声明、expose + XxxInst 接口、副作用清理、attrs 透传、Vitest + @vue/test-utils 测试、src/hooks + src/utils 组织方式以及编码风格（lint、format、commit 规范）。使用 defineComponent + TSX。不适用于一次性应用组件（使用 vue-tsx）或样式/主题决策。"
 ---
 
 # Vue 组件书写风格规范
@@ -70,12 +70,11 @@ export const buttonProps = {
   tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'button' },
   type: { type: String as PropType<ButtonType>, default: 'default' },
   size: { type: String as PropType<ButtonSize>, default: 'medium' },
-  onClick: [Function, Array] as PropType<MaybeArray<(e: MouseEvent) => void>>,
-  onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
+  onUpdateValue: Function as PropType<(value: string) => void>,
 } as const
 ```
 
-Props 对象可在测试和文档中复用。始终以 `as const` 结尾。v-model 同时提供 `onUpdateValue` 和 `'onUpdate:value'`。对复杂类型使用 `PropType`。
+Props 对象可在测试和文档中复用。始终以 `as const` 结尾。对复杂类型使用 `PropType`。
 
 ### 步骤 4：使用 `defineComponent` + setup 返回渲染函数实现组件
 
@@ -85,10 +84,15 @@ export default defineComponent({
   emits: { 'update:value': (val: any) => true },
   props: buttonProps,
   slots: Object as SlotsType<ButtonSlots>,
-  setup(props, { slots, attrs, expose }) {
+  setup(props, { emit, slots, attrs, expose }) {
     // 所有逻辑在闭包内完成 — 禁止 this
     const selfElRef = ref<HTMLElement | null>(null)
     const isDisabled = computed(() => props.disabled || false)
+
+    function doUpdateValue(value: string) {
+      emit('update:value', value)
+      props.onUpdateValue?.(value)
+    }
     // ...
     return () => {
       return <div ref={selfElRef}>{/* ... */}</div>
@@ -101,21 +105,39 @@ export default defineComponent({
 
 禁止解构 Props——使用 `props.xxx` 或 `toRefs`。DOM 模板引用命名使用 `Ref` 后缀（`selfElRef`）。计算属性/状态值使用语义前缀。
 
-### 步骤 5：通过 Callback Props + `call()` 辅助函数处理 Emits
+### 步骤 5：通过 `emits` 声明事件 + `emit()` 分发 + Callback Props
 
-**不使用 `emits` 选项**。通过 props 接收回调，通过 `call()` 辅助函数分发：
+使用 `emits` 选项声明事件，通过 setup 上下文中的 `emit()` 进行分发。对于 `update:xxx` v-model 事件添加对应的 callback prop（如 `onUpdateValue` 对应 `update:value`），方便父组件在 JSX 中监听：
 
 ```ts
-import { call } from '../../_utils/vue/call'
+export default defineComponent({
+  name: 'Button',
+  props: buttonProps,
+  emits: {
+    click: (e: MouseEvent) => true,
+    'update:value': (val: any) => true,
+  },
+  slots: Object as SlotsType<ButtonSlots>,
+  setup(props, { emit, slots, attrs, expose }) {
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
 
-function doUpdateValue(val: string) {
-  const { onUpdateValue, 'onUpdate:value': _onUpdateValue } = props
-  if (onUpdateValue) call(onUpdateValue, val)
-  if (_onUpdateValue) call(_onUpdateValue, val)
-}
+    function doUpdateValue(val: string) {
+      emit('update:value', val)
+      props.onUpdateValue?.(val)
+    }
+
+    return () => (
+      <div onClick={handleClick}>
+        {/* 内容 */}
+      </div>
+    )
+  },
+})
 ```
 
-通过 `MaybeArray` 同时支持单个函数和函数数组。`emits` 选项仅用于验证；实际 emit 分发通过 props 回调进行。
+`emits` 选项接受事件名称数组或带校验函数的对象。使用对象形式进行运行时校验。`onUpdateValue` 等 callback prop 允许父组件在 JSX 中通过 `onUpdateValue={handler}` 监听，等价于模板中的 `@update:value`。
 
 ### 步骤 6：使用 `SlotsType` + Slot 辅助函数进行类型化和解析
 
@@ -251,7 +273,6 @@ it('should merge disabled prop', () => {
 
 - 禁止在 `setup` 中使用 `this`
 - 禁止直接解构 props（`const { size } = props`）——应使用 `props.xxx` 或 `toRefs`
-- 禁止使用 `emits` 选项进行分发——应使用 callback props + `call()` 辅助函数
 - 禁止在非 DOM 模板引用上使用 `Ref` 后缀
 - 禁止遗留未清理的副作用（定时器、监听器、watch）
 - 禁止忘记在根元素上使用 `{...attrs}`

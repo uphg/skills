@@ -11,18 +11,18 @@ description: Full defineComponent + setup template with render function for Vue 
 // src/button/src/Button.tsx
 import { defineComponent, computed, ref, toRefs } from 'vue'
 import { useConfig, useFormItem } from '../../_mixins'
-import { call } from '../../_utils/vue/call'
 import { buttonProps } from './props'
 
 export default defineComponent({
   name: 'Button',
+  props: buttonProps,
   emits: {
+    click: (e: MouseEvent) => true,
     'update:value': (val: any) => true,
   },
-  props: buttonProps,
   slots: Object as SlotsType<ButtonSlots>,
 
-  setup(props, { slots, attrs, expose }) {
+  setup(props, { emit, slots, attrs, expose }) {
     // ===== DOM ref (only one with Ref suffix) =====
     const selfElRef = ref<HTMLElement | null>(null)
 
@@ -35,10 +35,13 @@ export default defineComponent({
     const currentSize = computed(() => props.size || 'medium')
 
     // ===== Side effect execution =====
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
+
     function doUpdateValue(val: string) {
-      const { onUpdateValue } = props
       emit('update:value', val)
-      if (onUpdateValue) call(onUpdateValue, val)
+      props.onUpdateValue?.(val)
     }
 
     // ===== Expose instance methods =====

@@ -19,20 +19,12 @@ export const buttonProps = {
   tag: { type: String as PropType<keyof HTMLElementTagNameMap>, default: 'button' },
   type: { type: String as PropType<ButtonType>, default: 'default' },
   size: { type: String as PropType<ButtonSize>, default: 'medium' },
-
-  // 函数 / 多回调
-  onClick: [Function, Array] as PropType<MaybeArray<(e: MouseEvent) => void>>,
-
-  // v-model:value
-  onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
 } as const
 ```
 
 **规则：**
 - 始终以 `as const` 结尾以启用类型收窄
-- v-model 同时提供 `onUpdateValue` 和 `'onUpdate:value'`（kebab-case）
 - 对所有非原始类型使用 `PropType`
-- 使用 `MaybeArray<T>` 接受单个函数或函数数组
 
 ## 类型与枚举治理
 
@@ -55,38 +47,47 @@ export type ButtonVariant = typeof buttonVariants[number]
 - `as const` 提供完全的类型收窄
 - 可用于 `v-for`、筛选、校验
 
-## Emits（Callback-Props 模式）
+## Emits
 
-**不使用 `emits` 选项**进行分发。所有回调通过 props 传递：
-
-```ts
-// 声明（在 props 中）
-onUpdateValue: [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
-'onUpdate:value': [Function, Array] as PropType<MaybeArray<OnUpdateValue>>,
-
-// 调用
-function doUpdateValue(val: string) {
-  const { onUpdateValue, 'onUpdate:value': _onUpdateValue } = props
-  if (onUpdateValue) call(onUpdateValue, val)
-  if (_onUpdateValue) call(_onUpdateValue, val)
-}
-```
-
-组件上的 `emits` 选项**仅用于运行时验证**——实际分发通过 props 回调。使用 `call()` 工具函数安全调用单个函数或函数数组：
+使用 `emits` 选项声明事件，通过 setup 上下文中的 `emit()` 进行分发。对于 `update:xxx` v-model 事件添加对应的 callback prop（如 `onUpdateValue` 对应 `update:value`），方便父组件在 JSX 中监听：
 
 ```ts
-// src/utils/call.ts
-export function call<T extends (...args: any[]) => any>(
-  fns: T | T[],
-  ...args: Parameters<T>
-): void {
-  if (Array.isArray(fns)) {
-    fns.forEach(fn => fn(...args))
-  } else {
-    fns(...args)
-  }
-}
+// 组件声明
+export default defineComponent({
+  name: 'Button',
+  props: buttonProps,
+  emits: {
+    click: (e: MouseEvent) => true,
+    'update:value': (val: any) => true,
+  },
+  slots: Object as SlotsType<ButtonSlots>,
+  setup(props, { emit, slots, attrs, expose }) {
+    function handleClick(e: MouseEvent) {
+      emit('click', e)
+    }
+
+    function doUpdateValue(val: string) {
+      emit('update:value', val)
+      props.onUpdateValue?.(val)
+    }
+
+    return () => (
+      <div onClick={handleClick}>
+        {/* 内容 */}
+      </div>
+    )
+  },
+})
 ```
+
+`emits` 选项接受事件名称数组或带校验函数的对象。使用对象形式进行运行时校验。`onUpdateValue` 等 callback prop 允许父组件在 JSX 中通过 `onUpdateValue={handler}` 监听，等价于模板中的 `@update:value`。
+
+**规则：**
+- 始终在 `emits` 选项中声明事件，以明确组件的对外事件接口
+- 优先使用对象形式（带校验器）以获取更好的运行时诊断
+- 对于 `update:xxx` v-model 事件，在 `props` 中添加对应的 callback prop（如 `onUpdateValue` 对应 `update:value`）
+- 通过 setup 参数中的 `emit` 函数分发事件，然后调用对应的 callback prop
+- v-model:value 对应的事件名为 `'update:value'`
 
 ## Slots
 

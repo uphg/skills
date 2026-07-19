@@ -40,7 +40,7 @@ npx skills add https://github.com/uphg/skills --skill javascript
 
 ### vue-component-authoring
 
-Vue 3 component library authoring conventions: directory layout, props/emits/slots/expose API design, callback-props emit pattern, const-array enum governance, side-effect cleanup, attrs passthrough, testing, and hooks/utils organization.
+Vue 3 component library authoring conventions: directory layout, props/emits/slots/expose API design, emits + callback props for JSX, const-array enum governance, side-effect cleanup, attrs passthrough, testing, and hooks/utils organization.
 
 ```bash
 npx skills add https://github.com/uphg/skills --skill vue-component-authoring
