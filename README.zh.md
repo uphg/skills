@@ -46,6 +46,14 @@ Vue 3 组件库组件书写规范：目录结构、props/emits/slots/expose API 
 npx skills add https://github.com/uphg/skills --skill vue-component-authoring
 ```
 
+### markdown-style
+
+Markdown 文档格式化与风格优化，支持中文、英文及中英混合文档。涵盖标题层级体系、代码/术语格式化、CJK 空格规范、排版细节、语言润色以及专业排版标准。
+
+```bash
+npx skills add https://github.com/uphg/skills --skill markdown-style
+```
+
 ## 使用方法
 
 本仓库专为支持"技能包"系统的 AI 编程工具（如 Cursor、Windsurf 等）设计。将 `skills/` 目录指向你的 AI 助手，即可为其提供代码生成的相关语境指导。

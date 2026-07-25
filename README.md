@@ -46,6 +46,14 @@ Vue 3 component library authoring conventions: directory layout, props/emits/slo
 npx skills add https://github.com/uphg/skills --skill vue-component-authoring
 ```
 
+### markdown-style
+
+Markdown document formatting and style optimization for Chinese, English, and CJK-mixed documents. Covers title hierarchy, code/term formatting, CJK spacing, typography, language polishing, and professional layout standards.
+
+```bash
+npx skills add https://github.com/uphg/skills --skill markdown-style
+```
+
 ## Usage
 
 This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.
