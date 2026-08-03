@@ -11,7 +11,7 @@
 使用 `defineComponent()` + `.tsx`（Composition API + TSX 渲染函数）的 Vue 3 开发。
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill vue-tsx
+npx skills add https://github.com/xypur/skills --skill vue-tsx
 ```
 
 ### fsd
@@ -19,7 +19,7 @@ npx skills add https://github.com/uphg/skills --skill vue-tsx
 遵循 Feature-Sliced Design (FSD) 方法论的前端架构设计。
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill fsd
+npx skills add https://github.com/xypur/skills --skill fsd
 ```
 
 ### imperative-commits
@@ -27,7 +27,7 @@ npx skills add https://github.com/uphg/skills --skill fsd
 强制 Git 提交信息使用祈使语气：首字母大写、动词原形、不以句号结尾。
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill imperative-commits
+npx skills add https://github.com/xypur/skills --skill imperative-commits
 ```
 
 ### javascript
@@ -35,7 +35,7 @@ npx skills add https://github.com/uphg/skills --skill imperative-commits
 JavaScript 编码规范：函数声明方式、调用顺序、事件处理命名以及数据转换命名模式。
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill javascript
+npx skills add https://github.com/xypur/skills --skill javascript
 ```
 
 ### vue-component-authoring
@@ -43,7 +43,7 @@ npx skills add https://github.com/uphg/skills --skill javascript
 Vue 3 组件库组件书写规范：目录结构、props/emits/slots/expose API 设计、emits + callback props for JSX、const 数组枚举治理、副作用清理、attrs 透传、测试以及 hooks/utils 组织。
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill vue-component-authoring
+npx skills add https://github.com/xypur/skills --skill vue-component-authoring
 ```
 
 ### markdown-style
@@ -51,7 +51,15 @@ npx skills add https://github.com/uphg/skills --skill vue-component-authoring
 Markdown 文档格式化与风格优化，支持中文、英文及中英混合文档。涵盖标题层级体系、代码/术语格式化、CJK 空格规范、排版细节、语言润色以及专业排版标准。
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill markdown-style
+npx skills add https://github.com/xypur/skills --skill markdown-style
+```
+
+### specs-workflow
+
+面向 AI 编码任务的规范驱动工作流：在写代码前先创建 `.specs/<module>/` 的 requirements/design/tasks/CHANGELOG 文档，保持需求↔设计↔任务之间的可追溯性，同步模块状态总表，并归档已完结模块。
+
+```bash
+npx skills add https://github.com/xypur/skills --skill specs-workflow
 ```
 
 ## 使用方法
@@ -75,5 +83,13 @@ skills/
 ## 贡献
 
 欢迎提交 issue 或 pull request 来改进现有技能。
+
+## 鸣谢
+
+[specs-workflow](#specs-workflow) 技能参考了 [ponytail](https://github.com/DietrichGebert/ponytail) 项目。
+
+## 许可证
+
+[MIT](./LICENSE)
 
 **作者：** LvHeng

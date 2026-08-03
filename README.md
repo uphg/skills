@@ -11,7 +11,7 @@ A curated collection of skill packs for AI coding assistants, providing project-
 Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill vue-tsx
+npx skills add https://github.com/xypur/skills --skill vue-tsx
 ```
 
 ### fsd
@@ -19,7 +19,7 @@ npx skills add https://github.com/uphg/skills --skill vue-tsx
 Frontend architecture design following Feature-Sliced Design (FSD) methodology.
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill fsd
+npx skills add https://github.com/xypur/skills --skill fsd
 ```
 
 ### imperative-commits
@@ -27,7 +27,7 @@ npx skills add https://github.com/uphg/skills --skill fsd
 Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period.
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill imperative-commits
+npx skills add https://github.com/xypur/skills --skill imperative-commits
 ```
 
 ### javascript
@@ -35,7 +35,7 @@ npx skills add https://github.com/uphg/skills --skill imperative-commits
 JavaScript coding conventions: function declaration style, call ordering, event handler naming, and data transformation naming patterns.
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill javascript
+npx skills add https://github.com/xypur/skills --skill javascript
 ```
 
 ### vue-component-authoring
@@ -43,7 +43,7 @@ npx skills add https://github.com/uphg/skills --skill javascript
 Vue 3 component library authoring conventions: directory layout, props/emits/slots/expose API design, emits + callback props for JSX, const-array enum governance, side-effect cleanup, attrs passthrough, testing, and hooks/utils organization.
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill vue-component-authoring
+npx skills add https://github.com/xypur/skills --skill vue-component-authoring
 ```
 
 ### markdown-style
@@ -51,7 +51,15 @@ npx skills add https://github.com/uphg/skills --skill vue-component-authoring
 Markdown document formatting and style optimization for Chinese, English, and CJK-mixed documents. Covers title hierarchy, code/term formatting, CJK spacing, typography, language polishing, and professional layout standards.
 
 ```bash
-npx skills add https://github.com/uphg/skills --skill markdown-style
+npx skills add https://github.com/xypur/skills --skill markdown-style
+```
+
+### specs-workflow
+
+Spec-driven workflow for AI coding tasks: create `.specs/<module>/` requirements/design/tasks/CHANGELOG docs before coding, keep requirements↔design↔tasks traceable, sync the module status table, and archive completed modules.
+
+```bash
+npx skills add https://github.com/xypur/skills --skill specs-workflow
 ```
 
 ## Usage
@@ -75,5 +83,13 @@ Each skill resides in its own directory under `skills/`, following the same stru
 ## Contributing
 
 Feel free to open issues or pull requests to improve existing skills.
+
+## Credits
+
+The [specs-workflow](#specs-workflow) skill is inspired by [ponytail](https://github.com/DietrichGebert/ponytail).
+
+## License
+
+[MIT](./LICENSE)
 
 **Author:** LvHeng
