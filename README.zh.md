@@ -54,6 +54,14 @@ Markdown 文档格式化与风格优化，支持中文、英文及中英混合�
 npx skills add https://github.com/xypur/skills --skill markdown-style
 ```
 
+### skill-dev
+
+面向本仓库的技能包创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与中英双语同步。
+
+```bash
+npx skills add https://github.com/xypur/skills --skill skill-dev
+```
+
 ### specs-workflow
 
 面向 AI 编码任务的规范驱动工作流：在写代码前先创建 `.specs/<module>/` 的 requirements/design/tasks/CHANGELOG 文档，保持需求↔设计↔任务之间的可追溯性，同步模块状态总表，并归档已完结模块。

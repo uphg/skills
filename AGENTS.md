@@ -133,6 +133,7 @@ Line counts and section numbers should match.
 | fsd | Feature-Sliced Design frontend architecture | `skills/fsd/` |
 | vue-component-authoring | Vue component library authoring conventions | `skills/vue-component-authoring/` |
 | specs-workflow | Spec-driven workflow (`.specs/` requirements/design/tasks/CHANGELOG convention) | `skills/specs-workflow/` |
+| skill-dev | Skill pack authoring methodology (structure, description optimization, evals, review checklist) | `skills/skill-dev/` |
 
 ## Build / Test / Lint
 

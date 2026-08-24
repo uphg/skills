@@ -54,6 +54,14 @@ Markdown document formatting and style optimization for Chinese, English, and CJ
 npx skills add https://github.com/xypur/skills --skill markdown-style
 ```
 
+### skill-dev
+
+Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and bilingual sync.
+
+```bash
+npx skills add https://github.com/xypur/skills --skill skill-dev
+```
+
 ### specs-workflow
 
 Spec-driven workflow for AI coding tasks: create `.specs/<module>/` requirements/design/tasks/CHANGELOG docs before coding, keep requirements↔design↔tasks traceable, sync the module status table, and archive completed modules.
