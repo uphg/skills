@@ -1,48 +1,49 @@
-# 修改记录
+# Changelog
 
-将 Vue3 文档的偏好从 `.vue` `<script setup lang="ts">` 语法优先改为 `defineComponent()` + `.tsx` 写法。
+Changed the Vue 3 documentation preference from `.vue` `<script setup lang="ts">` syntax first to `defineComponent()` + `.tsx`.
 
-## 变更清单
+## Changes
 
 ### 1. `SKILL.md`
 
-| 位置 | 修改前 | 修改后 |
+| Location | Before | After |
 |------|--------|--------|
-| 标语 (L12) | `Always use Composition API with <script setup lang="ts">` | `Always use Composition API with defineComponent() + .tsx` |
-| 偏好 (L17) | `Prefer <script setup lang="ts"> over <script>` | `Prefer defineComponent() + .tsx over <script setup lang="ts"> + .vue` |
-| 引用表 (L26) | `Script Setup & Macros` → `script-setup-macros.md` | `defineComponent + TSX` → `define-component-tsx.md` |
+| Tagline (L12) | `Always use Composition API with <script setup lang="ts">` | `Always use Composition API with defineComponent() + .tsx` |
+| Preference (L17) | `Prefer <script setup lang="ts"> over <script>` | `Prefer defineComponent() + .tsx over <script setup lang="ts"> + .vue` |
+| Reference table (L26) | `Script Setup & Macros` → `script-setup-macros.md` | `defineComponent + TSX` → `define-component-tsx.md` |
 | Component Template (L37-62) | `.vue` SFC with `<script setup lang="ts">` | `.tsx` with `defineComponent()` function signature |
 | description (frontmatter) | `script setup macros, defineProps/defineEmits/defineModel` | `defineComponent + TSX` |
 
-### 2. `references/script-setup-macros.md` → 删除
+### 2. `references/script-setup-macros.md` → deleted
 
-已移除。SFC 宏（`defineProps`、`defineEmits`、`defineModel`、`defineOptions`、`defineSlots`）不适用于 `.tsx` 写法。
+Removed. SFC macros (`defineProps`, `defineEmits`, `defineModel`, `defineOptions`, `defineSlots`) do not apply to the `.tsx` approach.
 
-### 3. `references/define-component-tsx.md` → 新建
+### 3. `references/define-component-tsx.md` → new
 
-覆盖以下主题：
+Covers:
+
 - `defineComponent()` Options Signature
 - `defineComponent()` Function Signature (3.3+)
-- Props 声明（runtime declaration + `PropType`）
-- Emits 声明
-- Generics 泛型组件
+- Props declaration (runtime declaration + `PropType`)
+- Emits declaration
+- Generic components
 - Expose
 - `defineAsyncComponent`
-- Custom Directives in TSX
-- Webpack Treeshaking 注意事项
+- Custom directives in TSX
+- Webpack treeshaking notes
 
 ### 4. `references/advanced-patterns.md`
 
-| 位置 | 修改说明 |
+| Location | Change |
 |------|----------|
-| Transition | 模板语法 → TSX/JSX，`v-if` 改为 `{condition && element}` |
-| TransitionGroup | `v-for` 改为 `.map()` |
-| Teleport | 模板语法 → TSX/JSX |
-| Suspense | 模板语法 → TSX/JSX，命名 slots 使用对象语法 `{{ default: () => ..., fallback: () => ... }}` |
-| KeepAlive | 模板语法 → TSX/JSX，动态组件用 `h(component)` |
-| v-memo / v-once | 标注为 template-only，无 TSX 等价写法 |
-| Custom Directives | `<script setup lang="ts">` → `defineComponent` setup 函数内定义 |
+| Transition | template syntax → TSX/JSX, `v-if` changed to `{condition && element}` |
+| TransitionGroup | `v-for` changed to `.map()` |
+| Teleport | template syntax → TSX/JSX |
+| Suspense | template syntax → TSX/JSX, named slots use object syntax `{{ default: () => ..., fallback: () => ... }}` |
+| KeepAlive | template syntax → TSX/JSX, dynamic components via `h(component)` |
+| v-memo / v-once | marked as template-only, no TSX equivalent |
+| Custom Directives | `<script setup lang="ts">` → defined inside a `defineComponent` setup function |
 
 ### 5. `references/core-new-apis.md`
 
-**无改动。** 该文件仅涉及 Composition API（reactivity、watchers、lifecycle、composables），不包含 SFC 特定语法，适用于 `.tsx` 和 `.vue` 两种写法。
+**No changes.** This file only covers the Composition API (reactivity, watchers, lifecycle, composables) and contains no SFC-specific syntax; it applies to both `.tsx` and `.vue`.

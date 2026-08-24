@@ -1,28 +1,28 @@
-# 修改记录
+# Changelog
 
 ## 2026-08-24
 
-### 泛化为公共技能
+### Generalized into a public skill
 
-- 移除仓库专属约定：删除双语同步相关内容（触发场景、Step 7 步骤、快速参考行、Prohibitions 条目及审查清单第 6 节），双语同步为当前仓库独有约定。
-- 包路径泛化：技能目录不再限定 `skills/<skill-name>/`，改为通用的 `<skill-name>/` 自包含目录，父目录取决于宿主环境；`GENERATION.md` / `CHANGES.md` 改为“宿主有此约定时遵循”。
-- description 与“何时使用”相应更新，中英文版及两份审查清单同步修改。
+- Removed repository-specific conventions: deleted all bilingual-sync content (trigger scenarios, Step 7 steps, quick-reference row, Prohibitions item, and review checklist section 6); bilingual sync is a convention unique to this repository.
+- Generalized package paths: skill directories are no longer limited to `skills/<skill-name>/`; they are self-contained `<skill-name>/` directories whose parent depends on the host environment. `GENERATION.md` / `CHANGES.md` changed from "required" to "follow if the host uses them".
+- Updated the description and "When to Use" accordingly in both language versions and both review checklists.
 
-### 补充中文版 references 文档
+### Added Chinese reference documents
 
-- 新增 `zh/skill-dev/references/review-checklist.zh.md` 与 `zh/skill-dev/references/writing-guide.zh.md`，与英文版 `references/` 内容对应。
-- `SKILL.zh.md` Step 6 中的参考文件链接改为指向中文版参考文件。
+- Added `zh/skill-dev/references/review-checklist.zh.md` and `zh/skill-dev/references/writing-guide.zh.md`, mirroring the English `references/`.
+- Repointed the Step 6 links in `SKILL.zh.md` to the Chinese reference files.
 
-### 新建 skills/skill-dev
+### Created skills/skill-dev
 
-创建技能开发方法论技能包，提炼出一套通用的技能编写规范：
+Created the skill development methodology pack, distilling a set of universal skill-writing guidelines:
 
-- `SKILL.md`：英文规范定义。核心内容包括：
-  - 四条核心原则（渐进披露三层模型、"解释 why 优于堆砌 MUST"、泛化而非过拟合、确定性步骤脚本化）
-  - 七步 Workflow：意图捕获 → 包结构设计（含 `scripts/`、`assets/` 资源分层）→ frontmatter/description 写法 → 正文写作 → 测试提示词（evals.json 格式）→ 审查清单 → 集成收尾
-  - Prohibitions / When Unsure 段落按需保留，不作为强制骨架
-- `references/review-checklist.md`：发布前质量审查清单（触发、渐进披露、写作风格、结构、评估、双语同步、仓库集成七组检查项）
-- `references/writing-guide.md`：description 触发优化方法论（should/should-not-trigger 查询设计、near-miss 反例）与正文写作风格指南
-- `GENERATION.md`：来源与生成元数据
+- `SKILL.md`: English definition. Key contents:
+  - Four core principles (three-level progressive disclosure, "explain the why instead of stacking MUSTs", generalize rather than overfit, script the deterministic parts)
+  - Seven-step workflow: capture intent → design package structure (with `scripts/` / `assets/` resource layering) → frontmatter/description → body → test prompts (evals.json format) → review checklist → finalize integration
+  - Prohibitions / When Unsure sections kept only when they earn their place, not as a mandatory skeleton
+- `references/review-checklist.md`: pre-release quality checklist (seven groups: triggering, progressive disclosure, writing style, structure, evaluation, bilingual sync, repository integration)
+- `references/writing-guide.md`: description optimization methodology (should-trigger / should-not-trigger query design, near-miss negatives) and body writing style guide
+- `GENERATION.md`: source and generation metadata
 
-同时创建中文版 `zh/skill-dev/SKILL.zh.md`，结构内容与英文版保持一致。
+Also created the Chinese version `zh/skill-dev/SKILL.zh.md`, structurally identical to the English version.

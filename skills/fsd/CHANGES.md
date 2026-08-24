@@ -1,53 +1,54 @@
-# 修改记录
+# Changelog
 
-## 2026-04-30 — 模块化拆分
+## 2026-04-30 — Modular split
 
-将主文档拆分为主文件 + references/ 模式，与 vue-tsx 技能保持一致。
+Split the main document into a main file + `references/` pattern, consistent with the vue-tsx skill.
 
-### 变更清单
+### Changes
 
-### 1. `SKILL.md` → 精简 (~158 行)
+### 1. `SKILL.md` → trimmed (~158 lines)
 
-保留核心内容：何时使用、工作流程、架构层次总览表、核心约束、架构概念、决策流程、参考文件索引、禁止事项、不确定时的处理。
+Kept the core content: when to use, workflow, architecture layer overview table, core constraints, architecture concepts, decision flow, reference file index, prohibitions, and fallback behavior.
 
-### 2. `references/layer-details.md` → 新建
+### 2. `references/layer-details.md` → new
 
-从主文档中移出六层详细说明（shared / entities / features / widgets / pages / app），包含各层的目录结构、定位和特点。
+Moved the detailed descriptions of the six layers (shared / entities / features / widgets / pages / app) out of the main document, including each layer's directory structure, positioning, and characteristics.
 
-### 3. `references/ecommerce-example.md` → 新建
+### 3. `references/ecommerce-example.md` → new
 
-从主文档中移出电商项目完整目录树案例。
+Moved the full e-commerce project directory tree example out of the main document.
 
-### 4. `SKILL.zh.md` → 同步精简
+### 4. `SKILL.zh.md` → synced trim
 
-中文版同步调整为相同结构，与英文版 section 完全对齐（158 行）。
+The Chinese version was adjusted to the same structure and is fully aligned with the English version's sections (158 lines).
 
-### 5. `references/layer-details.zh.md` → 新建
+### 5. `references/layer-details.zh.md` → new
 
-各层详解的中文版。
+Chinese version of the layer details.
 
-### 6. `references/ecommerce-example.zh.md` → 新建
+### 6. `references/ecommerce-example.zh.md` → new
 
-电商项目案例的中文版。
+Chinese version of the e-commerce project example.
 
 ---
 
-## 2026-04-28 — 初始版本
+## 2026-04-28 — Initial version
 
-创建 FSD (Feature-Sliced Design) 前端架构设计 skill 文档。
+Created the FSD (Feature-Sliced Design) frontend architecture skill document.
 
-### 变更清单
+### Changes
 
-### 1. `SKILL.zh.md` → 新建
+### 1. `SKILL.zh.md` → new
 
-中文版 skill 文档，覆盖以下主题：
-- 核心约束（单向依赖、公共 API、按业务分组、shared 纯净）
-- 六层架构详解（app / pages / widgets / features / entities / shared）
-- 切片与段的概念
-- 电商项目案例
-- 决策树：代码放哪里？
-- 禁止事项
+Chinese skill document covering:
 
-### 2. `SKILL.md` → 新建
+- Core constraints (unidirectional dependencies, public APIs, grouping by business, shared purity)
+- Six-layer architecture in detail (app / pages / widgets / features / entities / shared)
+- The concepts of slices and segments
+- E-commerce project example
+- Decision tree: where does this code go?
+- Prohibitions
 
-英文版 skill 文档，由 SKILL.zh.md 翻译而来。
+### 2. `SKILL.md` → new
+
+English skill document, translated from SKILL.zh.md.

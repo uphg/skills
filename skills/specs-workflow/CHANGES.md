@@ -1,50 +1,50 @@
-# 修改记录
+# Changelog
 
 ## 2026-07-31
 
-### 新建 skills/specs-workflow
+### Created skills/specs-workflow
 
-将 `src/specs-workflow/specs-workflow.md`（`.specs` 目录约定）提炼为可分发技能包：
+Distilled `src/specs-workflow/specs-workflow.md` (the `.specs` directory convention) into a distributable skill pack:
 
-- `SKILL.md`：英文规范定义，含 Workflow、目录结构、强制规则、命名约定、Prohibitions、When Unsure。
-- `references/file-templates.md`：`.specs/README.md`、`requirements.md`、`design.md`、`tasks.md`、`CHANGELOG.md` 完整骨架模板。
-- `references/example.md`：完整示例文档（后续拆分记录见下方）。
-- `GENERATION.md`：来源与生成元数据。
+- `SKILL.md`: English definition, including Workflow, directory structure, mandatory rules, naming conventions, Prohibitions, and When Unsure.
+- `references/file-templates.md`: full skeleton templates for `.specs/README.md`, `requirements.md`, `design.md`, `tasks.md`, and `CHANGELOG.md`.
+- `references/example.md`: complete example document (split-out recorded below).
+- `GENERATION.md`: source and generation metadata.
 
-同时创建中文版 `src/specs-workflow/SKILL.zh.md`，结构内容与英文版保持一致。
+Also created the Chinese version `src/specs-workflow/SKILL.zh.md`, structurally identical to the English version.
 
-### 重写 references/example.md 为完整示例
+### Rewrote references/example.md as a complete example
 
-- 由"压缩示例（截取片段 + 追溯链）"重写为**三份完整示例文档合一个文件**（英文，基于 `example/.specs/vue-headless-tabs/` 裁剪）：
-  - requirements.md 示例：保留 Requirement 1–3，每条约含 User Story + 完整验收标准
-  - design.md 示例：保留 Introduction / Architecture / Key Design Decisions / Data Models & Types / Components / Error Handling / Correctness Properties（3 条，`Validates: Requirements 2.2/2.3/2.5`）
-  - tasks.md 示例：保留阶段 1–3 及 Checkpoint，含 `_Requirements:` 引用与 Task Dependency Graph
-  - 内部引用保持自洽，只指向保留项
-- `SKILL.md` / `SKILL.zh.md`：Step 2 中在 file-templates 链接旁补充 `references/example.md` 链接
+- Rewrote from "condensed example (excerpted fragments + traceability chain)" into **three complete example documents in one file** (English, trimmed from `example/.specs/vue-headless-tabs/`):
+  - requirements.md example: kept Requirements 1–3, each with a User Story + full acceptance criteria
+  - design.md example: kept Introduction / Architecture / Key Design Decisions / Data Models & Types / Components / Error Handling / Correctness Properties (3 items, `Validates: Requirements 2.2/2.3/2.5`)
+  - tasks.md example: kept phases 1–3 and Checkpoint, with `_Requirements:` references and the Task Dependency Graph
+  - Internal references kept self-consistent, pointing only at retained items
+- `SKILL.md` / `SKILL.zh.md`: Step 2 now links `references/example.md` alongside the file-templates link
 
-### 拆分示例为独立文件
+### Split the example into standalone files
 
-- 删除 `references/example.md`，三份完整示例拆分为独立文件，置于 `references/examples/` 子目录：
-  - `references/examples/requirements.md` / `references/examples/design.md` / `references/examples/tasks.md`
-  - 内容从围栏中取出，即为可直接参照的真实示例文档
-- `SKILL.md` / `SKILL.zh.md`：Step 2 链接更新为指向 `references/examples/` 下的三个文件
+- Deleted `references/example.md`; the three complete examples were split into standalone files under `references/examples/`:
+  - `references/examples/requirements.md` / `design.md` / `tasks.md`
+  - Content taken out of the fences, ready to use as real reference documents
+- `SKILL.md` / `SKILL.zh.md`: Step 2 links updated to point to the three files under `references/examples/`
 
-### 示例图表改用 Mermaid
+### Switched example diagrams to Mermaid
 
-- `references/examples/design.md`：`## Architecture` 的 ASCII 框图替换为 Mermaid `flowchart TB` 图（保留三层结构：Consumer → API Layer → TabsContext，含 `uses` / `provide / inject` 边标签）
-- `references/file-templates.md`：design.md 骨架的 Architecture 小节补充约定："Use Mermaid for diagrams (e.g. architecture layers, data flow)."，使 AI 生成的图表格式保持一致
+- `references/examples/design.md`: replaced the ASCII box diagram in `## Architecture` with a Mermaid `flowchart TB` diagram (keeping the three-layer structure: Consumer → API Layer → TabsContext, with `uses` / `provide / inject` edge labels)
+- `references/file-templates.md`: added a convention to the Architecture section of the design.md skeleton: "Use Mermaid for diagrams (e.g. architecture layers, data flow).", keeping AI-generated diagrams consistent
 
-### 示例改为"提示为主 + 精简追溯示例"
+### Examples changed to "prompt-first + condensed traceability example"
 
-- 新建 `references/prompt-templates.md`：**事前规划版**填空提示（与骨架配套，定深度而非结构）——
-  - requirements.md：Introduction 点出痛点、Glossary 逐条定义、User Story 三要素、AC 须可测试且覆盖 happy path + 边界 + 异常
-  - design.md：Overview 点出取舍、Architecture 用 Mermaid 并说明"为什么这样分层"、Components 写"为什么"、每条 Property 用 `*For any*` 形式并回指需求
-  - tasks.md：按依赖划分阶段、任务引用需求条款、Checkpoint 必须可验证、依赖图 waves
-  - 横切追溯约定（`Validates:` / `_Requirements:`）
-- 删除 `references/examples/requirements.md` / `design.md` / `tasks.md` 三份完整示例，新增 `references/examples/traceability.md`：精简追溯链示例（一段完整需求 → 一条完整 Property → 一个完整任务 + 依赖图片段 + 追溯链图）
-- `SKILL.md` / `SKILL.zh.md`：Step 2 链接更新为 `file-templates.md` + `prompt-templates.md` + `examples/traceability.md`
+- Added `references/prompt-templates.md`: fill-in-the-blank prompts for planning ahead (paired with the skeletons; they fix depth, not structure) —
+  - requirements.md: Introduction names the pain point, Glossary defines each term, User Story has three elements, AC must be testable and cover happy path + edges + exceptions
+  - design.md: Overview names the trade-offs, Architecture uses Mermaid and explains "why layered this way", Components explain "why", each Property uses the `*For any*` form and points back to a requirement
+  - tasks.md: phases divided by dependency, tasks reference requirement clauses, Checkpoints must be verifiable, dependency graph waves
+  - Cross-cutting traceability conventions (`Validates:` / `_Requirements:`)
+- Deleted the three complete examples `references/examples/requirements.md` / `design.md` / `tasks.md`; added `references/examples/traceability.md`: a condensed traceability chain example (one full requirement → one full Property → one full task + dependency graph fragment + traceability chain diagram)
+- `SKILL.md` / `SKILL.zh.md`: Step 2 links updated to `file-templates.md` + `prompt-templates.md` + `examples/traceability.md`
 
-### 追溯链图改用 Mermaid
+### Switched the traceability chain diagram to Mermaid
 
-- `references/examples/traceability.md`：`## The traceability chain` 的 ASCII 图改为 Mermaid `flowchart TD`（Property 与 Task 两条带标签边指向 Requirement，保留 `Validates:` / `_Requirements:` 双向语义）
-- `references/file-templates.md`：Mermaid 约定措辞扩展为 "e.g. architecture layers, data flow, traceability"，明确覆盖关系/追溯图
+- `references/examples/traceability.md`: replaced the ASCII diagram in `## The traceability chain` with a Mermaid `flowchart TD` (Property and Task each point to Requirement with labeled edges, preserving the two-way `Validates:` / `_Requirements:` semantics)
+- `references/file-templates.md`: widened the Mermaid convention wording to "e.g. architecture layers, data flow, traceability", explicitly covering relationship/traceability diagrams

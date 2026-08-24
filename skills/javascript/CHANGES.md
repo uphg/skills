@@ -1,14 +1,15 @@
-# 修改记录
+# Changelog
 
-初始创建，基于 `src/javascript/AGENT.md` 生成 JavaScript 编码规范 skill。
+Initial creation: generated the JavaScript coding conventions skill from `src/javascript/AGENT.md`.
 
-## 变更清单
+## Changes
 
-### 1. `SKILL.md` → 新建
+### 1. `SKILL.md` → new
 
-从 `src/javascript/AGENT.md` 总结为 SKILL 格式，包含：
-- 函数声明方式：始终使用 `function` 而非箭头函数
-- 函数声明与调用顺序：入口函数在顶部，定义按调用顺序排列
-- 事件处理函数命名：`on[Event]` 模式
-- 数据转换函数命名：`to` / `as` / `parse` / `convert` 前缀约定
-- 应避免的命名：`change`、`process`、`handle`、`doConvert`
+Summarized from `src/javascript/AGENT.md` into SKILL format, including:
+
+- Function declaration style: always use `function` instead of arrow functions
+- Declaration and call ordering: entry functions on top, definitions ordered by call sequence
+- Event handler naming: the `on[Event]` pattern
+- Data transformation naming: `to` / `as` / `parse` / `convert` prefix conventions
+- Names to avoid: `change`, `process`, `handle`, `doConvert`

@@ -1,22 +1,22 @@
-# 修改记录
+# Changelog
 
-初始创建，基于 `src/markdown/README.md` 生成 Markdown 文档风格优化 skill。
+Initial creation: generated the Markdown document style optimization skill from `src/markdown/README.md`.
 
-## 变更清单
+## Changes
 
-### 1. `SKILL.md` → 新建
+### 1. `SKILL.md` → new
 
-从 `src/markdown/README.md` 提炼为 SKILL 格式，包含：
+Distilled from `src/markdown/README.md` into SKILL format, including:
 
-- 标题层级体系：中文数字编号（中文文档）与英文常规标题（英文文档）双模式
-- 代码与技术术语格式化：反引号包裹、围栏代码块语言标识
-- CJK 空格与标点规范：中英文间距、全角/半角标点规则
-- 结构间距规则：标题、段落、代码块、列表的空行规范
-- 语言润色规范：消除歧义、拆分长句、主动语态、"的/地/得" 区分、术语统一
-- 快速参考：文本样式、列表格式、表格、引用与脚注
-- 禁止事项：不添加新内容、不修改数据、不使用 emoji
-- 边界情况处理：英文翻译、emoji 删除、碎片化重组、信息矛盾处理
+- Heading hierarchy: dual mode with Chinese numbered headings (for Chinese documents) and conventional headings (for English documents)
+- Code and technical term formatting: backticks, fenced code block language tags
+- CJK spacing and punctuation rules: CJK-Latin spacing, full-width/half-width punctuation rules
+- Structural spacing rules: blank-line conventions for headings, paragraphs, code blocks, and lists
+- Language polish rules: disambiguation, splitting long sentences, active voice, 的/地/得 differentiation, terminology consistency
+- Quick reference: text styles, list formats, tables, quotes and footnotes
+- Prohibitions: do not add new content, do not change data, do not use emoji
+- Edge cases: English translation, emoji removal, fragmented reorganization, handling contradictory information
 
-### 2. `SKILL.zh.md` → 新建
+### 2. `SKILL.zh.md` → new
 
-中文版本，与 `SKILL.md` 结构完全一致，仅语言不同。
+Chinese version, structurally identical to `SKILL.md`; only the language differs.

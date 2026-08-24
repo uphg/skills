@@ -13,12 +13,13 @@ skills/
   <skill-name>/           # kebab-case, the distributable skill package
     SKILL.md              # English skill definition (required)
     GENERATION.md         # Provenance & generation metadata
-    CHANGES.md            # Modification changelog
+    CHANGES.md            # Modification changelog (English)
     references/           # Optional: detailed reference documents
       ...
 zh/
   <skill-name>/           # Chinese versions of skill documents
     SKILL.zh.md           # Chinese skill definition, same content as skills/<skill-name>/SKILL.md
+    CHANGES.zh.md         # Chinese changelog, same content as skills/<skill-name>/CHANGES.md
 example/                  # Reference examples (gitignored), not part of this project
 ```
 
@@ -83,6 +84,7 @@ Key formatting conventions:
 - **SKILL.zh.md**: Always uppercase prefix, always this exact filename
 - **GENERATION.md**: Always uppercase, always this exact filename
 - **CHANGES.md**: Always uppercase, always this exact filename
+- **CHANGES.zh.md**: Always uppercase prefix, always this exact filename
 - **Reference files**: under `references/`, `kebab-case` or descriptive names
 
 ## Context Efficiency Guidelines
@@ -111,7 +113,7 @@ Skills are loaded on-demand — the agent sees only the skill name and descripti
 
 1. Edit `skills/<skill-name>/SKILL.md` (English) first.
 2. Synchronize all changes to `zh/<skill-name>/SKILL.zh.md` (Chinese).
-3. Update `skills/<skill-name>/CHANGES.md` with the modification record.
+3. Update `skills/<skill-name>/CHANGES.md` with the modification record (English), and mirror it to `zh/<skill-name>/CHANGES.zh.md`.
 4. If the skill's scope, description, or install instructions change, update `README.md` and `README.zh.md`.
 
 ### Verifying Consistency

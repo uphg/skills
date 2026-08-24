@@ -1,57 +1,57 @@
-# 修改记录
+# Changelog
 
-## 2026-07-18 — 初始版本
+## 2026-07-18 — Initial version
 
-创建 Vue 组件库组件编写规范 skill（根据 `src/vue-component-authoring/README.md` 原始文档）。
-原名为 `vue-style-guide`，后更名为 `vue-component-authoring`。
+Created the Vue component library authoring conventions skill (from the original `src/vue-component-authoring/README.md` document).
+Originally named `vue-style-guide`, later renamed to `vue-component-authoring`.
 
-### 修改文件清单
+### Modified files
 
-- `SKILL.md` / `SKILL.zh.md` — 主文档
-- `references/component-template.md` / `.zh.md` — 组件模板
-- `references/api-design.md` / `.zh.md` — API 设计
-- `references/testing-and-lifecycle.md` / `.zh.md` — 测试与生命周期
-- `README.md` — 源文档
-
----
-
-## 2026-07-19 — Emit 模式修正
-
-将 Emit 模式从 callback-props + `call()` 辅助函数改为 Vue 3 官方 `emits` 选项 + `emit()` 分发。
-
-### 修改文件清单
-
-- `SKILL.md` — 英文技能主文档（canonical）
-- `SKILL.zh.md` — 中文技能主文档
-- `GENERATION.md` — 生成元数据
-- `references/project-layout.md` / `.zh.md` — 项目结构 + hooks/utils + 编码风格
-- `references/component-template.md` / `.zh.md` — defineComponent 实现模板
-- `references/api-design.md` / `.zh.md` — Props / 类型 / Emits / Slots / Expose
-- `references/testing-and-lifecycle.md` / `.zh.md` — 副作用清理 + attrs + 测试
+- `SKILL.md` / `SKILL.zh.md` — main document
+- `references/component-template.md` / `.zh.md` — component template
+- `references/api-design.md` / `.zh.md` — API design
+- `references/testing-and-lifecycle.md` / `.zh.md` — testing and lifecycle
+- `README.md` — source document
 
 ---
 
-## 2026-07-19 — Emit 模式补充：Callback Props
+## 2026-07-19 — Emit pattern correction
 
-每个 `update:xxx` v-model 事件添加对应的 callback prop（如 `onUpdateValue` 对应 `update:value`），方便父组件在 JSX 中使用。移除 Prohibitions 中关于 `onXxx` 的禁止条目。
+Changed the emit pattern from callback props + a `call()` helper function to Vue 3's official `emits` option + `emit()`.
 
-### 修改文件清单
+### Modified files
 
-- `SKILL.md` — 英文技能主文档
-- `SKILL.zh.md` — 中文技能主文档
-- `references/api-design.md` / `.zh.md` — Emits 章节
-- `references/component-template.md` / `.zh.md` — 基础模板
-- `CHANGES.md` — 本文件
+- `SKILL.md` — English skill main document (canonical)
+- `SKILL.zh.md` — Chinese skill main document
+- `GENERATION.md` — generation metadata
+- `references/project-layout.md` / `.zh.md` — project layout + hooks/utils + coding style
+- `references/component-template.md` / `.zh.md` — defineComponent implementation template
+- `references/api-design.md` / `.zh.md` — Props / types / Emits / Slots / Expose
+- `references/testing-and-lifecycle.md` / `.zh.md` — side-effect cleanup + attrs + testing
 
 ---
 
-## 2026-07-19 — 精简规范：移除过于死板的限制
+## 2026-07-19 — Emit pattern addition: callback props
 
-放宽目录结构为参考布局（非强制），移除 lint/format/commit 等与组件编写无关的编码风格条目，SSR 测试改为条件性要求，去掉 `src/utils/` 扁平化强制约束。
+Added a matching callback prop for each `update:xxx` v-model event (e.g. `onUpdateValue` for `update:value`) so parent components can use them easily in JSX. Removed the Prohibitions entry banning `onXxx`.
 
-### 修改文件清单
+### Modified files
 
-- `SKILL.md` / `SKILL.zh.md` — 主文档 Step 1、Step 11、Prohibitions、When Unsure
-- `references/project-layout.md` / `.zh.md` — 移除具体文件列表和编码风格表格
-- `references/testing-and-lifecycle.md` / `.zh.md` — SSR 测试改为条件性要求
-- `CHANGES.md` — 本文件
+- `SKILL.md` — English skill main document
+- `SKILL.zh.md` — Chinese skill main document
+- `references/api-design.md` / `.zh.md` — Emits section
+- `references/component-template.md` / `.zh.md` — base template
+- `CHANGES.md` — this file
+
+---
+
+## 2026-07-19 — Simplified rules: removed overly rigid restrictions
+
+Relaxed the directory structure into a reference layout (not mandatory), removed lint/format/commit and other coding-style entries unrelated to component authoring, changed SSR testing to a conditional requirement, and dropped the mandatory `src/utils/` flattening constraint.
+
+### Modified files
+
+- `SKILL.md` / `SKILL.zh.md` — main document Step 1, Step 11, Prohibitions, When Unsure
+- `references/project-layout.md` / `.zh.md` — removed concrete file lists and coding style tables
+- `references/testing-and-lifecycle.md` / `.zh.md` — SSR testing changed to a conditional requirement
+- `CHANGES.md` — this file

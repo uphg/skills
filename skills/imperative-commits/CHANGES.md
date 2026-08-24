@@ -1,20 +1,21 @@
-# 修改记录
+# Changelog
 
-## 2026-05-20 — 初始版本
+## 2026-05-20 — Initial version
 
-创建 imperative-commits 祈使句提交规范 skill 文档。
+Created the imperative-commits skill document for imperative-mood commit message conventions.
 
-### 变更清单
+### Changes
 
-### 1. `SKILL.md` → 新建
+### 1. `SKILL.md` → new
 
-英文版 skill 文档，涵盖以下主题：
-- 四条规则（祈使语气、首字母大写、动词原形、不以句号结尾）
-- 检验方法（"如果应用这个提交，它将 _____"）
-- 正确 vs 错误示例
-- 与约定式提交（Conventional Commits）的区别
-- 快速检查清单
+English skill document covering:
 
-### 2. `SKILL.zh.md` → 新建
+- Four rules (imperative mood, capitalized first letter, base verb form, no trailing period)
+- Verification method ("If applied, this commit will _____")
+- Correct vs incorrect examples
+- Difference from Conventional Commits
+- Quick checklist
 
-中文版 skill 文档，与英文版结构完全对齐。
+### 2. `SKILL.zh.md` → new
+
+Chinese skill document, structurally identical to the English version.
