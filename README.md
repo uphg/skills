@@ -6,12 +6,20 @@ A curated collection of skill packs for AI coding assistants, providing project-
 
 ## Available Skills
 
-### vue-tsx
+### skill-dev
 
-Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
+Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and writing-style guidance.
 
 ```bash
-npx skills add https://github.com/xypur/skills --skill vue-tsx
+npx skills add https://github.com/xypur/skills --skill skill-dev
+```
+
+### specs-workflow
+
+Spec-driven workflow for AI coding tasks: create `.specs/<module>/` requirements/design/tasks/CHANGELOG docs before coding, keep requirements↔design↔tasks traceable, sync the module status table, and archive completed modules.
+
+```bash
+npx skills add https://github.com/xypur/skills --skill specs-workflow
 ```
 
 ### fsd
@@ -20,6 +28,14 @@ Frontend architecture design following Feature-Sliced Design (FSD) methodology.
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill fsd
+```
+
+### vue-tsx
+
+Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
+
+```bash
+npx skills add https://github.com/xypur/skills --skill vue-tsx
 ```
 
 ### imperative-commits
@@ -52,22 +68,6 @@ Markdown document formatting and style optimization for Chinese, English, and CJ
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill markdown-style
-```
-
-### skill-dev
-
-Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and writing-style guidance.
-
-```bash
-npx skills add https://github.com/xypur/skills --skill skill-dev
-```
-
-### specs-workflow
-
-Spec-driven workflow for AI coding tasks: create `.specs/<module>/` requirements/design/tasks/CHANGELOG docs before coding, keep requirements↔design↔tasks traceable, sync the module status table, and archive completed modules.
-
-```bash
-npx skills add https://github.com/xypur/skills --skill specs-workflow
 ```
 
 ## Usage

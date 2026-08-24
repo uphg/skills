@@ -6,12 +6,20 @@
 
 ## 可用 skills
 
-### vue-tsx
+### skill-dev
 
-使用 `defineComponent()` + `.tsx`（Composition API + TSX 渲染函数）的 Vue 3 开发。
+技能包的创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与写作风格指导。
 
 ```bash
-npx skills add https://github.com/xypur/skills --skill vue-tsx
+npx skills add https://github.com/xypur/skills --skill skill-dev
+```
+
+### specs-workflow
+
+面向 AI 编码任务的规范驱动工作流：在写代码前先创建 `.specs/<module>/` 的 requirements/design/tasks/CHANGELOG 文档，保持需求↔设计↔任务之间的可追溯性，同步模块状态总表，并归档已完结模块。
+
+```bash
+npx skills add https://github.com/xypur/skills --skill specs-workflow
 ```
 
 ### fsd
@@ -20,6 +28,14 @@ npx skills add https://github.com/xypur/skills --skill vue-tsx
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill fsd
+```
+
+### vue-tsx
+
+使用 `defineComponent()` + `.tsx`（Composition API + TSX 渲染函数）的 Vue 3 开发。
+
+```bash
+npx skills add https://github.com/xypur/skills --skill vue-tsx
 ```
 
 ### imperative-commits
@@ -52,22 +68,6 @@ Markdown 文档格式化与风格优化，支持中文、英文及中英混合�
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill markdown-style
-```
-
-### skill-dev
-
-技能包的创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与写作风格指导。
-
-```bash
-npx skills add https://github.com/xypur/skills --skill skill-dev
-```
-
-### specs-workflow
-
-面向 AI 编码任务的规范驱动工作流：在写代码前先创建 `.specs/<module>/` 的 requirements/design/tasks/CHANGELOG 文档，保持需求↔设计↔任务之间的可追溯性，同步模块状态总表，并归档已完结模块。
-
-```bash
-npx skills add https://github.com/xypur/skills --skill specs-workflow
 ```
 
 ## 使用方法
