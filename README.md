@@ -56,7 +56,7 @@ npx skills add https://github.com/xypur/skills --skill markdown-style
 
 ### skill-dev
 
-Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and bilingual sync.
+Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and writing-style guidance.
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill skill-dev

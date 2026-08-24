@@ -56,7 +56,7 @@ npx skills add https://github.com/xypur/skills --skill markdown-style
 
 ### skill-dev
 
-面向本仓库的技能包创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与中英双语同步。
+技能包的创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与写作风格指导。
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill skill-dev
