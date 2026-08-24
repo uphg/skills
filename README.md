@@ -24,7 +24,7 @@ npx skills add https://github.com/xypur/skills --skill fsd
 
 ### imperative-commits
 
-Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period.
+Enforces Git commit titles in imperative mood: capitalized first letter, base verb form, no trailing period — applied uniformly regardless of repository history.
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill imperative-commits

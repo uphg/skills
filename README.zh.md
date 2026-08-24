@@ -24,7 +24,7 @@ npx skills add https://github.com/xypur/skills --skill fsd
 
 ### imperative-commits
 
-强制 Git 提交信息使用祈使语气：首字母大写、动词原形、不以句号结尾。
+强制 Git 提交标题使用祈使语气：首字母大写、动词原形、不以句号结尾——无论仓库历史如何，对所有提交统一执行。
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill imperative-commits

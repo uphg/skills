@@ -1,22 +1,32 @@
 ---
 name: imperative-commits
-description: "Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period. Use when users ask about commit message conventions or want to validate commit quality."
+description: "Enforces Git commit titles in imperative mood: capitalized first letter, base verb form, no trailing period — applied uniformly to every commit regardless of repository history. Use when creating a git commit or writing a commit message, reviewing or fixing an existing commit message, validating commit quality, or answering questions about commit conventions."
 ---
 
 # Imperative Commits
 
-Write Git commit titles that read like commands: `Add feature` not `Added feature` or `adds feature`.
+Write Git commit titles (the subject line) that read like commands: `Add feature` not `Added feature` or `adds feature`. Body-text conventions are out of scope.
 
-## The Four Rules
+## When to Use This Skill
 
-1. **Imperative mood** — Reads as a command
-2. **Capitalized** — First letter uppercase
-3. **Base verb** — Use `Add`, `Fix`, `Update` (not `Added`, `Fixes`, `Updating`)
-4. **No period** at the end
+- Before running `git commit` — composing the commit title
+- Reviewing or validating existing commit messages
+- Fixing a commit message rejected in review or CI
+- Answering questions about commit message conventions
 
-## The Test
+## Workflow
 
-Does your title complete this sentence? *"If applied, this commit will _____"*
+### Step 1: Apply the three rules
+
+These rules apply to **every** commit title, even when repository history uses a different style — uniformity is the purpose of this skill.
+
+1. **Imperative mood, base verb form** — use `Add`, `Fix`, `Update`; never `Added`, `Fixes`, `Updating`. A title must complete the sentence *"If applied, this commit will _____"*: `Add login validation` works; `Added login validation` doesn't. Git itself writes this way — `git merge` generates `Merge branch 'x'`, `git revert` generates `Revert "..."`.
+2. **Capitalized first letter** — applies to Latin-script titles; other languages have no letter case.
+3. **No trailing period** at the end of the title.
+
+### Step 2: Test and fix
+
+Fill the final title into *"If applied, this commit will _____"*. If it reads naturally, proceed; if not, rewrite it and say which titles you changed and why.
 
 ## Correct vs Incorrect
 
@@ -28,11 +38,13 @@ Does your title complete this sentence? *"If applied, this commit will _____"*
 
 ## Not to be confused with
 
-**Conventional Commits** and imperative commits are distinct conventions — pick one: `feat: add login` (Conventional Commits) or `Add login` (imperative), not both.
+**Conventional Commits** and imperative commits are distinct conventions. This skill enforces the imperative style: write `Add login`, not `feat: add login`, and never combine both in one title.
 
-## Quick validation
+## Prohibitions
 
-- Capitalized? ✅
-- Verb base form? ✅
-- No period? ✅
-- Passes "If applied..."? ✅
+- Do not write or accept a non-imperative title — including to match surrounding history; this skill defines the required convention.
+- Do not mix the two conventions in one title: `feat: Added login` satisfies neither.
+
+## When Unsure
+
+Default to the three rules; the *"If applied, this commit will _____"* test settles borderline wording. Deviate only when the user explicitly asks for a different style for a specific commit — an explicit instruction beats this skill.
