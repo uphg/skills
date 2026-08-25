@@ -1,0 +1,20 @@
+{
+  "skill_name": "imperative-commits",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just fixed a race condition in the cache layer, please commit my changes with a proper message.",
+      "expected_output": "Agent writes a commit whose title is imperative, capitalized, without a trailing period (e.g., `Fix cache race condition`) and passes the \"If applied, this commit will ___\" test."
+    },
+    {
+      "id": 2,
+      "prompt": "Review these commit messages from my teammate: `refactor: extract parser module`, `Updated the docs`, `Fix payment retry bug.` Which ones are fine?",
+      "expected_output": "`Updated the docs` flagged for past tense; `Fix payment retry bug.` flagged for trailing period; `refactor: extract parser module` flagged as Conventional Commits style with suggested rewrite `Extract parser module`. The agent enforces the imperative convention uniformly instead of accepting non-conforming styles."
+    },
+    {
+      "id": 3,
+      "prompt": "Our last 50 commits all use Conventional Commits (`feat: ...`, `fix: ...`). We're switching to plain imperative style from now on. Commit my staged changes.",
+      "expected_output": "Agent does not copy the historical convention; it writes an imperative title (e.g., `Add retry logic`), capitalized, no trailing period, demonstrating uniform enforcement regardless of repository history."
+    }
+  ]
+}

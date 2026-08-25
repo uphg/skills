@@ -6,12 +6,12 @@
 
 ## 可用 skills
 
-### vue-tsx
+### skill-dev
 
-使用 `defineComponent()` + `.tsx`（Composition API + TSX 渲染函数）的 Vue 3 开发。
+技能包的创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与写作风格指导。
 
 ```bash
-npx skills add https://github.com/xypur/skills --skill vue-tsx
+npx skills add https://github.com/xypur/skills --skill skill-dev
 ```
 
 ### fsd
@@ -22,9 +22,17 @@ npx skills add https://github.com/xypur/skills --skill vue-tsx
 npx skills add https://github.com/xypur/skills --skill fsd
 ```
 
+### vue-tsx
+
+使用 `defineComponent()` + `.tsx`（Composition API + TSX 渲染函数）的 Vue 3 开发。
+
+```bash
+npx skills add https://github.com/xypur/skills --skill vue-tsx
+```
+
 ### imperative-commits
 
-强制 Git 提交信息使用祈使语气：首字母大写、动词原形、不以句号结尾。
+强制 Git 提交标题使用祈使语气：首字母大写、动词原形、不以句号结尾——无论仓库历史如何，对所有提交统一执行。
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill imperative-commits
@@ -52,14 +60,6 @@ Markdown 文档格式化与风格优化，支持中文、英文及中英混合�
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill markdown-style
-```
-
-### skill-dev
-
-技能包的创建、审查与改进方法论：意图捕获、包结构设计（references/、scripts/、assets/）、description 触发优化、测试提示词、质量审查清单与写作风格指导。
-
-```bash
-npx skills add https://github.com/xypur/skills --skill skill-dev
 ```
 
 ## 使用方法

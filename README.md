@@ -6,12 +6,12 @@ A curated collection of skill packs for AI coding assistants, providing project-
 
 ## Available Skills
 
-### vue-tsx
+### skill-dev
 
-Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
+Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and writing-style guidance.
 
 ```bash
-npx skills add https://github.com/xypur/skills --skill vue-tsx
+npx skills add https://github.com/xypur/skills --skill skill-dev
 ```
 
 ### fsd
@@ -22,9 +22,17 @@ Frontend architecture design following Feature-Sliced Design (FSD) methodology.
 npx skills add https://github.com/xypur/skills --skill fsd
 ```
 
+### vue-tsx
+
+Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
+
+```bash
+npx skills add https://github.com/xypur/skills --skill vue-tsx
+```
+
 ### imperative-commits
 
-Enforces Git commit messages in imperative mood: capitalized first letter, base verb form, no trailing period.
+Enforces Git commit titles in imperative mood: capitalized first letter, base verb form, no trailing period — applied uniformly regardless of repository history.
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill imperative-commits
@@ -52,14 +60,6 @@ Markdown document formatting and style optimization for Chinese, English, and CJ
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill markdown-style
-```
-
-### skill-dev
-
-Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and writing-style guidance.
-
-```bash
-npx skills add https://github.com/xypur/skills --skill skill-dev
 ```
 
 ## Usage
