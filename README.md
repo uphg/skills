@@ -62,14 +62,6 @@ Methodology for creating, reviewing, and improving skill packs: intent capture, 
 npx skills add https://github.com/xypur/skills --skill skill-dev
 ```
 
-### specs-workflow
-
-Spec-driven workflow for AI coding tasks: create `.specs/<module>/` requirements/design/tasks/CHANGELOG docs before coding, keep requirements↔design↔tasks traceable, sync the module status table, and archive completed modules.
-
-```bash
-npx skills add https://github.com/xypur/skills --skill specs-workflow
-```
-
 ## Usage
 
 This repository is designed to be consumed by AI-powered coding tools (such as Cursor, Windsurf, or similar) that support a "skills" system. Point your AI assistant to the `skills/` directory to give it context-aware guidance on code generation.
@@ -91,10 +83,6 @@ Each skill resides in its own directory under `skills/`, following the same stru
 ## Contributing
 
 Feel free to open issues or pull requests to improve existing skills.
-
-## Credits
-
-The [specs-workflow](#specs-workflow) skill is inspired by [ponytail](https://github.com/DietrichGebert/ponytail).
 
 ## License
 

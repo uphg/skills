@@ -62,14 +62,6 @@ npx skills add https://github.com/xypur/skills --skill markdown-style
 npx skills add https://github.com/xypur/skills --skill skill-dev
 ```
 
-### specs-workflow
-
-面向 AI 编码任务的规范驱动工作流：在写代码前先创建 `.specs/<module>/` 的 requirements/design/tasks/CHANGELOG 文档，保持需求↔设计↔任务之间的可追溯性，同步模块状态总表，并归档已完结模块。
-
-```bash
-npx skills add https://github.com/xypur/skills --skill specs-workflow
-```
-
 ## 使用方法
 
 本仓库专为支持"技能包"系统的 AI 编程工具（如 Cursor、Windsurf 等）设计。将 `skills/` 目录指向你的 AI 助手，即可为其提供代码生成的相关语境指导。
@@ -91,10 +83,6 @@ skills/
 ## 贡献
 
 欢迎提交 issue 或 pull request 来改进现有技能。
-
-## 鸣谢
-
-[specs-workflow](#specs-workflow) 技能参考了 [ponytail](https://github.com/DietrichGebert/ponytail) 项目。
 
 ## 许可证
 
