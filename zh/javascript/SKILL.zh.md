@@ -1,6 +1,6 @@
 ---
 name: javascript
-description: JavaScript 编码规范，涵盖函数声明方式（function vs 箭头函数）、函数调用顺序、事件处理函数命名（on[事件]）、数据转换函数命名模式（to/parse/convert）以及变量命名模式（is/has 前缀、描述性布尔命名、单复数名词）。在编写 JavaScript 代码、命名函数或设定编码规范时使用。
+description: 套用 JavaScript 编码规范：优先 function 声明而非 const 箭头函数，函数按调用顺序排列，事件处理函数用 on[Event] 命名，数据转换函数用 to/parse/convert 前缀，布尔变量用 is/has 前缀。在编写或审查 JavaScript 代码、为函数或变量命名（如“这个处理函数该叫什么”）、制定团队编码规范时使用。不适用于 TypeScript 类型层设计或特定框架的组件规范。
 metadata:
   author: LvHeng
   version: "2026.5.20"

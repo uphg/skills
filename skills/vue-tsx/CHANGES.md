@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-08-25 — Description rewrite
+
+Reworked the front-matter description following the example-skills benchmark: verb-led opening, concrete trigger scenarios, explicit negative boundary, and cross-reference to the sibling skill. No skill content changed.
+
+### Changes
+
+### 1. `SKILL.md` → description revised
+
+- Opening now verb-led: "Develop Vue 3 components …" instead of the noun list "Vue 3 Composition API, defineComponent + TSX …".
+- Added explicit coverage anchors: reactivity primitives (ref, shallowRef, computed) and generic components.
+- Added a trigger scenario: converting an SFC (`<script setup>`) to defineComponent/TSX.
+- Added negative boundary: not for component library conventions (use vue-component-authoring) or styling/theme decisions.
+
+### 2. `SKILL.zh.md` → synced
+
+Structurally identical Chinese version updated with the same changes.
+
 Changed the Vue 3 documentation preference from `.vue` `<script setup lang="ts">` syntax first to `defineComponent()` + `.tsx`.
 
 ## Changes

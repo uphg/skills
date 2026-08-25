@@ -1,5 +1,22 @@
 # 修改记录
 
+## 2026-08-25 — description 措辞优化
+
+将术语堆叠的覆盖清单压缩为代表性锚点，开头改为动词引导，在保持触发匹配价值的同时让 description 更易扫读。技能内容无改动——从 description 中移除的主题（const 数组枚举治理、副作用清理、attrs 透传、hooks/utils 组织、编码风格）仍在正文完整覆盖。
+
+### 变更清单
+
+### 1. `SKILL.zh.md` → 修订 description
+
+- 开头改为动词引导：“使用 defineComponent + TSX 为组件库编写可复用的 Vue 3 组件”。
+- “使用时机”扩展：构建、审查或重构组件库组件。
+- 覆盖清单压缩为 API 设计锚点（emits 选项 + emit() 分发配合 callback props、SlotsType 类型声明、expose + XxxInst 接口）以及目录/测试组织（Vitest + @vue/test-utils）。
+- 负面边界实质不变，措辞收紧为“一次性应用组件”。
+
+### 2. `SKILL.md` → 同步
+
+英文版同步以上修改，结构与中文版一致。
+
 ## 2026-07-18 — 初始版本
 
 创建 Vue 组件库组件编写规范 skill（根据 `src/vue-component-authoring/README.md` 原始文档）。

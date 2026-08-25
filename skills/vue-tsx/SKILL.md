@@ -1,6 +1,6 @@
 ---
 name: vue-tsx
-description: Vue 3 Composition API, defineComponent + TSX, reactivity system, and built-in components. Use when writing Vue components with defineComponent/TSX, watchers, or using Transition/Teleport/Suspense/KeepAlive.
+description: Develop Vue 3 components with the Composition API using defineComponent() + .tsx. Use when writing, refactoring, or reviewing Vue components in TSX — props/emits declaration, reactivity (ref, shallowRef, computed), watchers, composables, generic components, and built-ins such as Transition/Teleport/Suspense/KeepAlive. Also trigger on converting an SFC (`<script setup>`) to defineComponent/TSX. Not for component library conventions (use vue-component-authoring) or styling/theme decisions.
 metadata:
   author: LvHeng
   version: "2026.4.27"

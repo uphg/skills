@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-08-25 — Description rewrite
+
+Compressed the jargon-heavy coverage enumeration into representative anchors and switched to a verb-led opening, keeping the matching value while making the description easier to scan. No skill content changed — topics dropped from the description (const-array enum governance, side-effect cleanup, attrs passthrough, hooks/utils organization, coding style) remain covered in the skill body.
+
+### Changes
+
+### 1. `SKILL.md` → description revised
+
+- Opening now verb-led: "Author reusable Vue 3 components for a component library using defineComponent + TSX".
+- "Use when" broadened: building, reviewing, or refactoring library components.
+- Coverage enumeration compressed to API-design anchors (emits option + emit() with callback props, SlotsType typing, expose + XxxInst interfaces) plus directory/test organization (Vitest + @vue/test-utils).
+- Negative boundary unchanged in substance; wording tightened to "one-off application components".
+
+### 2. `SKILL.zh.md` → synced
+
+Structurally identical Chinese version updated with the same changes.
+
 ## 2026-07-18 — Initial version
 
 Created the Vue component library authoring conventions skill (from the original `src/vue-component-authoring/README.md` document).

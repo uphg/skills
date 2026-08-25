@@ -1,6 +1,6 @@
 ---
 name: vue-tsx
-description: Vue 3 Composition API、defineComponent + TSX、响应式系统及内置组件。当使用 defineComponent/TSX 编写 Vue 组件、使用侦听器（watchers），或使用 Transition/Teleport/Suspense/KeepAlive 时使用此技能。
+description: 使用 defineComponent() + .tsx 配合 Composition API 开发 Vue 3 组件。在编写、重构或审查 TSX 形式的 Vue 组件时使用——涵盖 props/emits 声明、响应式（ref、shallowRef、computed）、侦听器、composables、泛型组件，以及 Transition/Teleport/Suspense/KeepAlive 等内置组件。将 SFC（`<script setup>`）改写为 defineComponent/TSX 时同样适用。不适用于组件库书写规范（使用 vue-component-authoring）或样式/主题决策。
 metadata:
   author: LvHeng
   version: "2026.4.27"

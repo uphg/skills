@@ -1,6 +1,6 @@
 ---
 name: javascript
-description: JavaScript coding conventions covering function declaration style (function vs arrow), function ordering, event handler naming (on[Event]), data transformation naming patterns (to/parse/convert), and variable naming patterns (is/has prefix, descriptive booleans, plural/singular nouns). Use when writing JavaScript, naming functions, or setting coding standards.
+description: "Apply JavaScript coding conventions: prefer function declarations over const arrow functions, order functions by call sequence, name event handlers on[Event], data transformers to/parse/convert, and booleans with is/has prefixes. Use when writing or reviewing JavaScript code, naming a function or variable (\"what should I call this handler?\"), or setting team coding standards. Not for TypeScript type-level design or framework-specific component conventions."
 metadata:
   author: LvHeng
   version: "2026.5.20"

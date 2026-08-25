@@ -1,5 +1,22 @@
 # 修改记录
 
+## 2026-08-25 — description 措辞优化
+
+参照示例技能库的最佳实践重写 front-matter description：动词开头、具体触发场景、明确的负面边界，并交叉引用姊妹技能。技能内容无改动。
+
+### 变更清单
+
+### 1. `SKILL.zh.md` → 修订 description
+
+- 开头改为动词引导：“使用 defineComponent() + .tsx 配合 Composition API 开发 Vue 3 组件”，替代原来的名词罗列。
+- 补充覆盖锚点：响应式基础（ref、shallowRef、computed）与泛型组件。
+- 新增触发场景：将 SFC（`<script setup>`）改写为 defineComponent/TSX。
+- 新增负面边界：不适用于组件库书写规范（使用 vue-component-authoring）或样式/主题决策。
+
+### 2. `SKILL.md` → 同步
+
+英文版同步以上修改，结构与中文版一致。
+
 将 Vue3 文档的偏好从 `.vue` `<script setup lang="ts">` 语法优先改为 `defineComponent()` + `.tsx` 写法。
 
 ## 变更清单
