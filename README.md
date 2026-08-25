@@ -56,7 +56,7 @@ npx skills add https://github.com/xypur/skills --skill vue-component-authoring
 
 ### markdown-style
 
-Markdown document formatting and style optimization for Chinese, English, and CJK-mixed documents. Covers title hierarchy, code/term formatting, CJK spacing, typography, language polishing, and professional layout standards.
+Markdown document formatting and style optimization for Chinese, English, and CJK-mixed documents. Covers code/term formatting, CJK spacing, typography, language polishing, and professional layout standards.
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill markdown-style

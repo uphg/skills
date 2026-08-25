@@ -56,7 +56,7 @@ npx skills add https://github.com/xypur/skills --skill vue-component-authoring
 
 ### markdown-style
 
-Markdown 文档格式化与风格优化，支持中文、英文及中英混合文档。涵盖标题层级体系、代码/术语格式化、CJK 空格规范、排版细节、语言润色以及专业排版标准。
+Markdown 文档格式化与风格优化，支持中文、英文及中英混合文档。涵盖代码/术语格式化、CJK 空格规范、排版细节、语言润色以及专业排版标准。
 
 ```bash
 npx skills add https://github.com/xypur/skills --skill markdown-style

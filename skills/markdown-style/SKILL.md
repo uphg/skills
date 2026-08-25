@@ -1,6 +1,6 @@
 ---
 name: markdown-style
-description: Markdown document authoring, formatting, and style optimization. Use whenever the user writes or edits markdown content — especially Chinese or CJK-mixed documents. Covers heading hierarchy, code formatting, CJK spacing, typography, and language polishing.
+description: "Format, polish, and standardize markdown documents with professional typography. Use whenever the user writes, edits, or reformats markdown content — trigger on requests like \"clean up this README\", \"polish this doc\", or pasted draft text destined for a .md file — especially Chinese or CJK-mixed documents. Covers code formatting, CJK spacing, list/table structure, and language polishing. Not for rendering markdown to HTML/PDF or static site builds."
 metadata:
   author: LvHeng
   version: "2026.7.25"
@@ -19,7 +19,7 @@ Use this skill whenever the user is writing or editing a markdown document:
 - Editing or revising existing markdown content
 - Formatting, polishing, or optimizing markdown documents
 - Restructuring a document into a clean, standardized layout
-- Fixing inconsistent headings, spacing, or code block formatting
+- Fixing inconsistent spacing or code block formatting
 - Fixing CJK spacing and punctuation in Chinese or mixed-language documents
 - Reconciling conflicting terminology or inconsistent style
 
@@ -29,42 +29,13 @@ Use this skill whenever the user is writing or editing a markdown document:
 
 Read the entire input first. Identify the core topic, logical structure, and critical data. Determine the primary language — Chinese, English, or mixed. Do not start reformatting until you fully grasp the author's intent.
 
-### Step 2: Apply Title Hierarchy
-
-**For Chinese or CJK-mixed documents**, use the Chinese-numeral hierarchy:
-
-```
-# Document Title
-## 一、Section Title
-### 1.1 Subsection
-#### 1.1.1 Detail
-```
-
-- Level-2 (`##`): Chinese ordinal numerals (一、二、三、四…)
-- Level-3 (`###`): Arabic decimal numbering (1.1, 1.2, 2.1…)
-- Level-4 (`####`): Arabic decimal numbering (1.1.1, 1.1.2…)
-- Exactly one space between the numeral part and the title text
-- Final section: `## 总结` (or `## 总结与展望` if the source has forward-looking content)
-
-**For English-only documents**, use conventional English headings:
-
-```
-# Document Title
-## Section Title
-### Subsection
-#### Detail
-```
-
-- No numeral prefix for English headings
-- Use descriptive, concise section titles in title case or sentence case — stay consistent
-
-### Step 3: Format Code & Technical Terms
+### Step 2: Format Code & Technical Terms
 
 - Wrap all technical terms, commands, parameters, filenames, package names, and variable names in backticks (`` `code` ``)
 - Fenced code blocks **must** include a language identifier; default to `plaintext` if unknown
 - Preserve all code, commands, API names, numeric values, and dates **verbatim** — no alteration
 
-### Step 4: Fix Spacing & Punctuation
+### Step 3: Fix Spacing & Punctuation
 
 **For CJK-mixed content** (Chinese + English + digits):
 
@@ -80,7 +51,7 @@ Read the entire input first. Identify the core topic, logical structure, and cri
 
 **For English-only content**: Use standard English typography. No CJK spacing rules apply.
 
-### Step 5: Apply Spacing & Structural Rules
+### Step 4: Apply Spacing & Structural Rules
 
 - Blank line **before and after** each heading
 - Blank line **between** paragraphs
@@ -91,7 +62,7 @@ Read the entire input first. Identify the core topic, logical structure, and cri
 - Ordered lists: use `1.` (auto-increment)
 - Nested lists: indent continuation lines by 2 spaces, keep indentation aligned
 
-### Step 6: Polish Language Quality
+### Step 5: Polish Language Quality
 
 **For Chinese content**:
 
@@ -116,7 +87,7 @@ Read the entire input first. Identify the core topic, logical structure, and cri
 - Maintain consistent terminology
 - Professional, neutral tone
 
-### Step 7: Output the Formatted Document
+### Step 6: Output the Formatted Document
 
 Output only the complete, formatted markdown document. Include an `> Abstract:` blockquote after the title summarizing core points in 2–3 sentences. Do not include a table of contents.
 
@@ -169,7 +140,6 @@ Text with a footnote[^1].
 - Use emoji (😊、✅、🔥 etc.) — remove all emoji from input
 - Change the author's core conclusion or stance
 - Force non-tabular content into table format
-- Mix different heading numbering systems within the same document
 - Rewrite, expand, or alter the author's original meaning
 - For content under 100 characters: ask the user for more material instead of padding
 
