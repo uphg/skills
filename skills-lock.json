@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "skill-dev": {
+      "source": "xypur/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skill-dev/SKILL.md",
+      "computedHash": "590135b21c4ba885f48d9d2700b71ce15e0b277ee5c6b5aa9cfc3d9f95b8465a"
+    }
+  }
+}
