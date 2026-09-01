@@ -38,12 +38,12 @@ Enforces Git commit titles in imperative mood: capitalized first letter, base ve
 npx skills add https://github.com/xypur/skills --skill imperative-commits
 ```
 
-### javascript
+### js-coding-style
 
-JavaScript coding conventions: function declaration style, call ordering, event handler naming, and data transformation naming patterns.
+JavaScript coding style conventions: function declaration style, call ordering, event handler naming, and naming patterns for data transformations, async functions, constants, and files.
 
 ```bash
-npx skills add https://github.com/xypur/skills --skill javascript
+npx skills add https://github.com/xypur/skills --skill js-coding-style
 ```
 
 ### vue-component-authoring

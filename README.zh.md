@@ -38,12 +38,12 @@ npx skills add https://github.com/xypur/skills --skill vue-tsx
 npx skills add https://github.com/xypur/skills --skill imperative-commits
 ```
 
-### javascript
+### js-coding-style
 
-JavaScript 编码规范：函数声明方式、调用顺序、事件处理命名以及数据转换命名模式。
+JavaScript 编码风格约定：函数声明方式、调用顺序、事件处理命名，以及数据转换、异步函数、常量和文件的命名模式。
 
 ```bash
-npx skills add https://github.com/xypur/skills --skill javascript
+npx skills add https://github.com/xypur/skills --skill js-coding-style
 ```
 
 ### vue-component-authoring
