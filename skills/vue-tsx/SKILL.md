@@ -3,21 +3,13 @@ name: vue-tsx
 description: Develop Vue 3 components with the Composition API using defineComponent() + .tsx. Use when writing, refactoring, or reviewing Vue components in TSX — props/emits declaration, reactivity (ref, shallowRef, computed), watchers, composables, generic components, and built-ins such as Transition/Teleport/Suspense/KeepAlive. Also trigger on converting an SFC (`<script setup>`) to defineComponent/TSX. Not for component library conventions (use vue-component-authoring) or styling/theme decisions.
 metadata:
   author: LvHeng
-  version: "2026.4.27"
+  version: "2026.9.2"
   source: Generated from https://github.com/vuejs/docs, scripts at https://github.com/antfu/skills
 ---
 
 # Vue
 
-> Based on Vue 3.5+. Always use Composition API with `defineComponent()` + `.tsx`.
-
-## Preferences
-
-- Prefer TypeScript over JavaScript
-- Prefer `defineComponent()` + `.tsx` over `<script setup lang="ts">` + `.vue`
-- For performance, prefer `shallowRef` over `ref` if deep reactivity is not needed
-- Always use Composition API over Options API
-- Discourage using Reactive Props Destructure
+> Based on Vue 3.5+. Always use Composition API with `defineComponent()` + `.tsx`. Prefer `shallowRef` over `ref` when deep reactivity is not needed. Avoid Reactive Props Destructure.
 
 ## Core
 

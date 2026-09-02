@@ -1,6 +1,6 @@
 ---
 name: vue-component-authoring
-description: "使用 defineComponent + TSX 为组件库编写可复用的 Vue 3 组件。在构建、审查或重构组件库组件（Button、Input、Dialog、Select 等）、设计其公开 API——props/emits/slots/expose 设计、emits 选项 + emit() 分发配合 callback props、SlotsType 类型声明、expose + XxxInst 接口——或组织组件目录与测试（Vitest + @vue/test-utils）时使用。不适用于一次性应用组件（使用 vue-tsx）或样式/主题决策。"
+description: "使用 defineComponent + TSX 为组件库编写可复用的 Vue 3 组件。在构建、审查或重构组件库组件（Button、Input、Dialog、Select 等）、设计其公开 API——props/emits/slots/expose 设计、emits 选项 + emit() 分发配合 callback props、SlotsType 类型声明、expose + XxxInst 接口——管理副作用清理（cleanupXxx + onBeforeUnmount）与 attrs 透传（inheritAttrs、根元素合并）或 SSR 兼容，或组织组件目录与测试（Vitest + @vue/test-utils）时使用。不适用于一次性应用组件（使用 vue-tsx）或样式/主题决策。"
 ---
 
 # Vue 组件书写风格规范

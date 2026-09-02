@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-02 — Added expectations to evals.json
+
+Each eval in the existing evals.json now carries an `expectations` array (verifiable statements) per the skill-creator schema, enabling automated grading and benchmark runs. Prompts and `expected_output` unchanged.
+
 ## 2026-08-24 — Restore enforcement semantics
 
 Per maintainer feedback: the skill's purpose is to enforce imperative mood uniformly, not to defer to repository conventions. Reverted the conflict-resolution behavior added earlier today while keeping the structural improvements.

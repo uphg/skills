@@ -1,5 +1,9 @@
 # 修改记录
 
+## 2026-09-02 — 新增 evals.json
+
+按 skill-dev Step 5 与 skill-creator schema 新增 3 条测试提示词(含 expected_output 与 expectations)。覆盖:全局状态(token)的 shared 归属、entity/widget/feature 分层决策、跨层 import 违规审查。SKILL.zh.md 内容无改动。
+
 ## 2026-04-30 — 模块化拆分
 
 将主文档拆分为主文件 + references/ 模式，与 vue-tsx 技能保持一致。

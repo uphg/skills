@@ -1,0 +1,26 @@
+{
+  "skill_name": "vue-component-authoring",
+  "note": "Trigger eval set (skill-creator description optimization, fallback manual mode). should_trigger=true queries must consult vue-component-authoring; near-miss negatives are app-level components (vue-tsx), other tooling, or general Vue questions.",
+  "queries": [
+    { "id": 1, "query": "我们团队要起一个 Vue 组件库项目，monorepo 目录怎么组织？组件的样式、测试分别放哪？", "should_trigger": true },
+    { "id": 2, "query": "组件库的 Dialog 组件，onConfirm 回调 prop 和 emits 事件要同时支持吗？tsx 里怎么声明？", "should_trigger": true },
+    { "id": 3, "query": "组件库的 slots 怎么用 SlotsType 做类型？只用 JSX children 传内容行不行？", "should_trigger": true },
+    { "id": 4, "query": "Button 组件的 type 属性用字符串联合类型还是 const 数组？类型怎么导出给使用方？", "should_trigger": true },
+    { "id": 5, "query": "库里的 Select 要暴露 focus() 方法让用户通过 ref 调用，defineComponent 下 SelectInst 类型怎么定义？", "should_trigger": true },
+    { "id": 6, "query": "tooltip 组件 mount 后监听了全局 click 关闭弹层，卸载时的清理有什么要遵守的约定？", "should_trigger": true },
+    { "id": 7, "query": "组件库组件要不要关掉属性透传？tsx 里根元素上怎么合并 attrs？", "should_trigger": true },
+    { "id": 8, "query": "组件库的 Popover 怎么用 @vue/test-utils 写测试？要覆盖 emit 和 callback props 两种用法", "should_trigger": true },
+    { "id": 9, "query": "组件库组件怎么做 SSR 兼容？onMounted 在服务端不执行", "should_trigger": true },
+    { "id": 10, "query": "库组件的 props 默认值用 withDefaults 还是 defaults 函数？团队想统一一种写法", "should_trigger": true },
+    { "id": 11, "query": "帮我们业务项目写一个多层嵌套的表单页组件，defineComponent + tsx", "should_trigger": false },
+    { "id": 12, "query": "我的 tsx 文件 props 类型报 TS2322，帮我看看怎么修", "should_trigger": false },
+    { "id": 13, "query": "React 组件库的 ref 转发用 forwardRef 还是 ref as prop？", "should_trigger": false },
+    { "id": 14, "query": "npm 包名带 @org scope 有什么讲究？组件库包名和文档站域名要一致吗？", "should_trigger": false },
+    { "id": 15, "query": "antd 和 element-plus 的 Message 组件设计上有什么差异？", "should_trigger": false },
+    { "id": 16, "query": "组件库的版本管理和 changesets 流程怎么搭？", "should_trigger": false },
+    { "id": 17, "query": "业务页面里一段 v-html 要抽成组件，只在这一个页面用", "should_trigger": false },
+    { "id": 18, "query": "写一个 vite 插件，让组件库的组件能按需自动引入", "should_trigger": false },
+    { "id": 19, "query": "defineEmits 的 tuple 语法是什么意思？", "should_trigger": false },
+    { "id": 20, "query": "组件库的文档站用 vitepress 怎么搭？", "should_trigger": false }
+  ]
+}

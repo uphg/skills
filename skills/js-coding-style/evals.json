@@ -1,0 +1,41 @@
+{
+  "skill_name": "js-coding-style",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "用 JavaScript 写一个应用初始化模块（单文件即可）：程序启动时先从 localStorage 读取用户的主题和语言设置，然后从后端拉取公告列表，最后把公告渲染到页面并缓存到内存变量里，方便后续刷新时直接用缓存。直接给我完整代码。",
+      "expected_output": "Entry function invoked at the top and declared with `function`; definitions follow call order. localStorage access named readXxx/writeXxx (e.g., readSettingsFromStorage), backend fetch named apiXxx (e.g., apiGetAnnouncements) without an Async suffix, in-memory cache access named getXxx/setXxx.",
+      "expectations": [
+        "All functions are declared with the `function` keyword — no arrow functions assigned to `const`",
+        "The entry function is called at the top of the file, and function definitions appear in the same order they are called",
+        "localStorage access functions use read/write verbs (e.g., readSettingsFromStorage / writeSettingsToStorage)",
+        "The backend request function uses api + verb naming (e.g., apiGetAnnouncements / apiFetchAnnouncements) and does NOT take an Async suffix",
+        "In-memory cache access uses get/set verbs (e.g., getCachedAnnouncements / setCachedAnnouncements)",
+        "No vague forbidden names (change / process / handle / doConvert)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "帮我把这个旧模块的命名整理成团队规范，只改名字和必要的声明方式，逻辑不要动：\n\nconst handleSubmit = () => { saveOrder(); };\nconst processData = (str) => { /* 把 '12.3%' 这类字符串转成数字 12.3 */ };\nasync function getUser() { const res = await fetch('/api/user'); return res.json(); }\nconst max = 10;\nlet isloading = true;",
+      "expected_output": "Handler stays on[Event] but as a function declaration (onSubmit); processData becomes a to/parse/convert name (e.g., toNumber); getUser becomes apiGetUser (api + verb, no Async); max becomes UPPER_SNAKE_CASE; isloading becomes isLoading.",
+      "expectations": [
+        "Event handler renamed to on[Event] format (e.g., onSubmit) and declared with the `function` keyword",
+        "The string-to-number conversion function uses a to/parse/convert pattern (e.g., toNumber / parsePercent / convertToNumber)",
+        "The API request function is renamed to api + verb (e.g., apiGetUser) — NOT getUserAsync or asyncFetch",
+        "The constant is renamed to UPPER_SNAKE_CASE (e.g., MAX_ORDERS / MAX_LIMIT)",
+        "The boolean variable is renamed with the is prefix and correct camelCase (isLoading)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "我在写一个主题模块，里面有两个函数要命名：一个调后端接口保存用户的主题偏好（POST /api/theme），另一个是本地的初始化流程——读 localStorage 里的主题、应用主题、返回一个 Promise。按我们团队的命名规范给这两个函数起名，并把代码骨架写出来。",
+      "expected_output": "Backend save uses apiSaveTheme / apiUpdateTheme (api + verb, no Async suffix); local init flow is initThemeAsync (Async suffix); localStorage read is readThemeFromStorage.",
+      "expectations": [
+        "The backend request function uses api + verb naming (e.g., apiSaveTheme / apiUpdateTheme) without an Async suffix",
+        "The local initialization function takes the Async suffix (e.g., initThemeAsync) since it returns a Promise",
+        "The two naming schemes are not mixed (no apiSaveThemeAsync, no asyncSaveTheme)",
+        "The localStorage access uses read/write verb naming (e.g., readThemeFromStorage)"
+      ]
+    }
+  ]
+}

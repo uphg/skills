@@ -141,7 +141,7 @@ Writing style:
 
 ### Step 5: Create Test Prompts
 
-Write 2–3 realistic test prompts — the kind a real user would actually type, not abstract summaries — and record expected outcomes. Save them as `evals.json` alongside the skill (or in the PR description if the repo prefers):
+Write 2–3 realistic test prompts — the kind a real user would actually type, not abstract summaries — and record expected outcomes. Save them as `evals.json` at the skill root (upstream skill-creator uses `evals/evals.json`; either is fine — pick one per repo and stay consistent):
 
 ```json
 {
@@ -150,7 +150,8 @@ Write 2–3 realistic test prompts — the kind a real user would actually type,
     {
       "id": 1,
       "prompt": "The task prompt as a user would phrase it",
-      "expected_output": "What a correct result looks like"
+      "expected_output": "What a correct result looks like",
+      "expectations": ["Verifiable statement 1", "Verifiable statement 2"]
     }
   ]
 }

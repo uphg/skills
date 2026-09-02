@@ -1,5 +1,11 @@
 # 修改记录
 
+## 2026-09-02 — 精简 Preferences;新增 evals.json
+
+- 删除 `Preferences` 一节:"优先 TypeScript"、"优先 defineComponent + .tsx"、"始终 Composition API" 与开头引言重复;两条独有规则(深响应式非必需时优先 `shallowRef`、避免响应式 Props 解构)并入引言。与此前 js-coding-style 的 Preferences 清理同标准。
+- 新增 evals.json:3 条测试提示词(SFC → TSX 改写、防抖搜索与侦听器清理、shallowRef 性能取舍),含 `expectations`。
+- frontmatter `metadata.version` → `2026.9.2`。
+
 ## 2026-08-25 — description 措辞优化
 
 参照示例技能库的最佳实践重写 front-matter description：动词开头、具体触发场景、明确的负面边界，并交叉引用姊妹技能。技能内容无改动。

@@ -1,5 +1,16 @@
 # 修改记录
 
+## 2026-09-02 — description 补充缺失触发锚点(降级触发评测)
+
+运行了 description 级触发评测(上游 run_loop.py 依赖 `claude -p`,本环境中挂起不可用;改用 fresh 上下文判定器模拟 available_skills 决策,每个技能 20 条查询——见 `trigger-evals.json`)。
+
+- vue-tsx:20/20 正确——不修改。
+- vue-component-authoring:17/20;3 个漏报正例(副作用清理、attrs 透传、SSR 兼容)是只写在正文、触发时不可见的能力。在 description 中补充 `cleanupXxx + onBeforeUnmount` 清理、`inheritAttrs`/根元素 attrs 合并、SSR 兼容锚点。
+
+## 2026-09-02 — 新增 evals.json
+
+按 skill-dev Step 5 与 skill-creator schema 新增 2 条测试提示词(含 expected_output 与 expectations)。覆盖:Dialog 组件完整 API(props/emits/callbacks/slots/expose/测试)、副作用清理规范。SKILL.zh.md 内容无改动。
+
 ## 2026-08-25 — description 措辞优化
 
 将术语堆叠的覆盖清单压缩为代表性锚点，开头改为动词引导，在保持触发匹配价值的同时让 description 更易扫读。技能内容无改动——从 description 中移除的主题（const 数组枚举治理、副作用清理、attrs 透传、hooks/utils 组织、编码风格）仍在正文完整覆盖。

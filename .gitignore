@@ -4,3 +4,8 @@ example
 .claude/
 .pi/
 
+# skill-creator eval workspaces
+*-workspace/
+
+# local agent workspace
+.agents/

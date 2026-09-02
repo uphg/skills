@@ -1,0 +1,36 @@
+{
+  "skill_name": "fsd",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "FSD 项目里登录后的 token 现在存在 features/auth 里，但几乎每个页面的请求都要带上它，很多地方在跨 feature import，很乱。token 应该放哪？给出迁移思路。",
+      "expected_output": "App-wide token doesn't belong to one feature → shared/api (or shared/auth) with a shared api client (interceptor/initializer); explains the layer import rule and public API via index.ts.",
+      "expectations": [
+        "Recommends moving the token down to shared (shared/api or shared/auth) instead of keeping it in features/auth",
+        "Explains the FSD layer import rule (a layer may only import from layers strictly below)",
+        "Mentions public API via index.ts for cross-module imports",
+        "Addresses how the shared api client receives the token (interceptor / initializer) rather than feature-to-feature imports"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "新需求做一个商品详情页：页面里有一块“商品卡片”（图片+价格+加购按钮），产品说购物车抽屉里也要用一模一样的这块卡片。这块 UI 该放在哪层？pages、widgets、features、entities、shared 怎么选？",
+      "expected_output": "The reusable product card is a business-entity view → entities/product (entity UI); add-to-cart is a feature (feature/add-to-cart) invoked via props/callbacks; the page composes them. Reasoning via the layer decision flow.",
+      "expectations": [
+        "Places the reusable product card at the entities level (entity UI) rather than pages/widgets",
+        "Treats add-to-cart as a feature (feature/add-to-cart) wired in via props/callbacks",
+        "Explains the decision using the layer decision flow (whose business meaning it carries / how many contexts reuse it)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Review 这个 import：entities/user/model/user-store.ts 里写了 import { headerModel } from 'features/header'。有没有问题？怎么改？",
+      "expected_output": "Violation: entities cannot import from a higher layer (features). Fix by inverting the dependency (pass data via props/callbacks) or moving the shared piece down a layer — not by re-pathing the import.",
+      "expectations": [
+        "Identifies the import as a layer violation (entities must not import from features)",
+        "Proposes a concrete fix: invert the dependency (store receives data via props/callbacks) or move the shared logic down a layer",
+        "Does not suggest merely changing the import path to bypass the rule"
+      ]
+    }
+  ]
+}

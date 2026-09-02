@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-02 — Added evals.json
+
+Added 3 test prompts with `expected_output` and `expectations` per skill-dev Step 5 and the skill-creator schema. Coverage: shared placement of app-wide state (token), entity/widget/feature layer decision, cross-layer import violation review. No SKILL.md content changed.
+
 ## 2026-04-30 — Modular split
 
 Split the main document into a main file + `references/` pattern, consistent with the vue-tsx skill.

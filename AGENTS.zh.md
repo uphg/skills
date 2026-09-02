@@ -14,6 +14,7 @@ skills/
     SKILL.md              # 英文技能定义（必需）
     GENERATION.md         # 来源与生成元数据
     CHANGES.md            # 修改变更日志
+    evals.json            # 可选：2-3 条测试提示词与预期结果（见 skill-dev Step 5）
     references/           # 可选：详细参考文档
       ...
 skills-zh/
@@ -76,6 +77,8 @@ description: "<一句话描述何时使用该技能，包括触发场景>"
 - 使用**列表**描述场景和约束。
 - 保持 front matter 中的 `description` 简洁 — 它决定技能何时被激活。
 
+**参考型技能**（如 `vue-tsx` 这类速查型技能）可用主题表格 + `references/` 指针替代 Workflow 骨架，但触发信息必须保留在 frontmatter `description` 中。
+
 ## 命名约定
 
 - **技能目录**：`kebab-case`（例如 `vue-tsx`、`find-skills`）
@@ -103,6 +106,7 @@ description: "<一句话描述何时使用该技能，包括触发场景>"
    - `GENERATION.md`（元数据：来源、git SHA、生成日期）
    - `CHANGES.md`（中文变更日志）
    - `references/`（可选，用于补充文档）
+   - `evals.json`（可选但推荐：2–3 条真实测试提示词，含 `expected_output` 与 `expectations`，见 skill-dev Step 5）
 2. 创建 `skills-zh/<skill-name>/`，包含：
    - `SKILL.zh.md`（中文，与英文版本结构一致）
 3. 更新 `README.md` 和 `README.zh.md`，添加新技能条目和安装命令。
@@ -129,8 +133,14 @@ grep -n '^##' skills-zh/<skill-name>/SKILL.zh.md
 
 | 技能 | 描述 | 目录 |
 |---|---|---|
-| vue-tsx | Vue 3 Composition API + TSX 开发 | `skills/vue-tsx/` |
+| skill-dev | 技能包创作方法论（结构、description 优化、evals、审查清单） | `skills/skill-dev/` |
 | fsd | Feature-Sliced Design 前端架构 | `skills/fsd/` |
+| frontend-arch | 前端架构原则 + 增量重构指南 | `skills/frontend-arch/` |
+| imperative-commits | Git 提交标题祈使语气，统一执行 | `skills/imperative-commits/` |
+| js-coding-style | JavaScript 编码风格：声明方式、调用顺序、命名模式 | `skills/js-coding-style/` |
+| markdown-style | Markdown 排版与格式化（支持 CJK） | `skills/markdown-style/` |
+| vue-component-authoring | Vue 组件库组件书写规范 | `skills/vue-component-authoring/` |
+| vue-tsx | Vue 3 Composition API + TSX 开发 | `skills/vue-tsx/` |
 
 ## 构建 / 测试 / 代码检查
 

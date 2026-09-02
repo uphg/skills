@@ -1,0 +1,26 @@
+{
+  "skill_name": "vue-tsx",
+  "note": "Trigger eval set (skill-creator description optimization, fallback manual mode). should_trigger=true queries must consult vue-tsx; near-miss negatives share keywords but need another skill or none.",
+  "queries": [
+    { "id": 1, "query": "帮我把这个 HelloWorld.vue 改成 defineComponent + tsx 的写法，我们项目在把所有 SFC 迁移到 .tsx", "should_trigger": true },
+    { "id": 2, "query": "写一个 Modal.tsx 组件，props 有 visible 和 title，关闭时 emit close 事件，用 defineComponent 写", "should_trigger": true },
+    { "id": 3, "query": "我的 TSX 组件里模板 ref 拿不到实例类型，defineComponent 下怎么声明实例类型？", "should_trigger": true },
+    { "id": 4, "query": "vue3 泛型组件怎么用 tsx 写一个 Select<T>，让 option 类型和 value 类型联动？", "should_trigger": true },
+    { "id": 5, "query": "日历组件想用 TransitionGroup 做动画，但我们项目是 tsx 写法，内置组件在 jsx 里怎么用？", "should_trigger": true },
+    { "id": 6, "query": "defineComponent 里 watch 深层嵌套对象不触发，watch 的选项应该怎么写？", "should_trigger": true },
+    { "id": 7, "query": "把项目从 script setup 迁移到 tsx，defineProps 的 withDefaults 应该怎么改写？", "should_trigger": true },
+    { "id": 8, "query": "大表格数据源用了 shallowRef 后更新行视图不刷新，正确的更新方式是什么？", "should_trigger": true },
+    { "id": 9, "query": "tsx 组件的 emits 怎么声明？父组件里 onXxx 怎么传？", "should_trigger": true },
+    { "id": 10, "query": "用 tsx + defineComponent 写一个 useWebSocket composable，要自动重连、组件卸载时清理", "should_trigger": true },
+    { "id": 11, "query": "我们组件库的 Button 要统一 props API 标准，组件库的目录结构应该怎么组织？", "should_trigger": false },
+    { "id": 12, "query": "Vue 的 ref 和 reactive 有什么区别？新手该用哪个？", "should_trigger": false },
+    { "id": 13, "query": "我的 .vue 文件模板里 v-model 不生效，帮我看看哪里写错了", "should_trigger": false },
+    { "id": 14, "query": "Pinia store 在组件里拿到 undefined，怎么排查？", "should_trigger": false },
+    { "id": 15, "query": "vite.config.ts 里怎么配路径别名 @ 指向 src？", "should_trigger": false },
+    { "id": 16, "query": "帮这个 .vue 组件写单测，用 @vue/test-utils 的 mount，覆盖点击事件", "should_trigger": false },
+    { "id": 17, "query": "vue-router 的 beforeEach 导航守卫每次路由变化都会触发吗？", "should_trigger": false },
+    { "id": 18, "query": "Nuxt 3 的 hydration mismatch 报错怎么解决？", "should_trigger": false },
+    { "id": 19, "query": "公司内部 Vue 组件库的组件命名有什么约定？UniversalButton 还是 AppButton 好？", "should_trigger": false },
+    { "id": 20, "query": "用 React 函数组件写一个防抖输入框 debounce 300ms", "should_trigger": false }
+  ]
+}

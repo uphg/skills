@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-09-02 — Description: added missing trigger anchors (fallback trigger eval)
+
+Ran a description-only trigger evaluation (upstream run_loop.py requires `claude -p`, which hangs in this environment; used a fresh-context judge simulating the available_skills decision against 20 queries per skill — see `trigger-evals.json`).
+
+- vue-tsx: 20/20 correct — no change.
+- vue-component-authoring: 17/20; the 3 false negatives (side-effect cleanup, attrs passthrough, SSR compatibility) were capabilities covered only in the body, invisible at trigger time. Added `cleanupXxx + onBeforeUnmount` cleanup, `inheritAttrs`/root-element attrs merging, and SSR compatibility anchors to the description.
+
+## 2026-09-02 — Added evals.json
+
+Added 2 test prompts with `expected_output` and `expectations` per skill-dev Step 5 and the skill-creator schema. Coverage: full Dialog component API (props/emits/callbacks/slots/expose/tests), side-effect cleanup convention. No SKILL.md content changed.
+
 ## 2026-08-25 — Description rewrite
 
 Compressed the jargon-heavy coverage enumeration into representative anchors and switched to a verb-led opening, keeping the matching value while making the description easier to scan. No skill content changed — topics dropped from the description (const-array enum governance, side-effect cleanup, attrs passthrough, hooks/utils organization, coding style) remain covered in the skill body.

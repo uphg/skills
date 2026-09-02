@@ -4,17 +4,32 @@
     {
       "id": 1,
       "prompt": "我们的 React 项目现在所有组件都在 src/components，工具函数在 src/utils，redux store 在 src/store。每加一个新功能要同时改五六个目录，新人上手特别慢。帮我重新组织一下项目结构，但别停掉业务开发。",
-      "expected_output": "Should NOT propose a big-bang rewrite. Should give the gate/pain-signal framing, then an incremental plan (pages first with thin routes, binary classify leftovers into app/shared, kill page-to-page imports by duplication-or-promotion, unpack single-use shared code, then purpose folders). Should mention adding a lint/alias setup and that inter-page imports are temporarily tolerated only in stage 1."
+      "expected_output": "Should NOT propose a big-bang rewrite. Should give the gate/pain-signal framing, then an incremental plan (pages first with thin routes, binary classify leftovers into app/shared, kill page-to-page imports by duplication-or-promotion, unpack single-use shared code, then purpose folders). Should mention adding a lint/alias setup and that inter-page imports are temporarily tolerated only in stage 1.",
+      "expectations": [
+        "Does not propose a big-bang rewrite; proposes an incremental, gate-based plan",
+        "Starts from pages with thin routes and binary-classifies leftover code into app/shared",
+        "Mentions mechanical enforcement (lint rule / alias / dependency check) and that inter-page imports are tolerated only in stage 1"
+      ]
     },
     {
       "id": 2,
       "prompt": "登录后拿到的 token 几乎每个页面都要用，现在我把它存在 features/auth 的 store 里，别的页面想用就得跨模块 import，很乱。token 应该放哪？",
-      "expected_output": "Should identify the violation: application-wide state living inside one feature module. Should recommend shared/api reactive store / dedicated shared/auth module (or a session entity at a lower tier for rich current-user logic), and explain how the higher-tier token reaches the lower-tier api client (manual pass / context pull / reactive push). Should prefer cookie sessions when possible and mention auto-logout on refresh-token rejection."
+      "expected_output": "Should identify the violation: application-wide state living inside one feature module. Should recommend shared/api reactive store / dedicated shared/auth module (or a session entity at a lower tier for rich current-user logic), and explain how the higher-tier token reaches the lower-tier api client (manual pass / context pull / reactive push). Should prefer cookie sessions when possible and mention auto-logout on refresh-token rejection.",
+      "expectations": [
+        "Identifies application-wide state living inside one feature module as the violation",
+        "Recommends shared/api or a dedicated shared/auth module (or a session entity at a lower tier) for the token",
+        "Explains how the lower-tier api client receives the token (manual pass / context pull / reactive push), prefers cookie sessions when possible, and mentions auto-logout on refresh-token rejection"
+      ]
     },
     {
       "id": 3,
       "prompt": "Review this structure: features/cart/ui/CartList.tsx 里 import 了 features/product/model/pricing.ts 的价格计算函数，最近 product 又反过来 import 了 cart 的角标逻辑，两边测试都要一起跑。",
-      "expected_output": "Should name it as a same-tier cross-import evolving into bidirectional dependency. Should apply the coupling playbook: pricing is pure domain logic → push down to a lower tier so both import legally; UI overlap → compose at page level via render props/slots; merge only if they always change together. Should note strategy of importing through public API is last resort and must be documented."
+      "expected_output": "Should name it as a same-tier cross-import evolving into bidirectional dependency. Should apply the coupling playbook: pricing is pure domain logic → push down to a lower tier so both import legally; UI overlap → compose at page level via render props/slots; merge only if they always change together. Should note strategy of importing through public API is last resort and must be documented.",
+      "expectations": [
+        "Names it as a same-tier cross-import evolving into a bidirectional dependency",
+        "Recommends pushing pure domain logic (pricing) down to a lower tier so both features import it legally",
+        "Mentions page-level composition (render props/slots) as the alternative, and documented public-API import as the last resort"
+      ]
     }
   ]
 }

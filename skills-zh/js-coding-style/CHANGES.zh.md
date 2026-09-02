@@ -1,5 +1,30 @@
 # 修改记录
 
+## 2026-09-02 — 新增 evals.json
+
+按 skill-dev Step 5 与 skill-creator schema 新增 3 条测试提示词(含 expected_output 与 expectations)。覆盖:声明方式与调用顺序、命名审查、api 与 Async 消歧。SKILL.zh.md 内容无改动。
+
+## 2026-09-02 — 重构章节布局:代码结构与命名分离
+
+围绕文档的两个本质问题——代码如何组织、事物如何命名——重新组织章节布局。此前评审发现存在归类错位与内容重叠。所有规则、示例与注意事项均保留,本次仅调整信息架构。
+
+### 变更清单
+
+### 1. `SKILL.md` → 章节重构
+
+- 将两个近似重复的顶级标题 `Function Declaration Style` 与 `Function Declaration Order` 合并为 `Function Structure`,下设 `Declaration` 与 `Call Order` 两个子节。
+- 新增统一的 `Naming Conventions` 伞层:
+  - 将四个函数命名子节(事件处理器、数据转换、异步函数、存储与缓存访问)收拢为一张速查表(`场景 | 模式 | 示例`),表下保留三条消歧规则(`Async` 后缀语义;`api` + 动词永不与 `Async` 混用,不用 `asyncFetch`/`doRequest`;`read`/`write` 与 `get`/`set` 按数据位置选择)。
+  - 将 `Constants` 移出"函数命名约定"——常量不是函数——与 `Variable Naming` 合并为 `Variables & Constants`。
+  - 顶级章节 `File Naming` 与 `Names to Avoid` 归入 `Naming Conventions`。
+- 顶级章节从 9 个收敛到 4 个:何时使用此技能 → 函数结构 → 命名约定 → 核心原则。
+- `to` / `parse` / `convert` 保留为三行独立表格行,维持类型转换/字符串解析/复杂转换的区分。
+- frontmatter `metadata.version` → `2026.9.2`。
+
+### 2. `SKILL.zh.md` → 同步
+
+中文版同步重构,与英文版结构完全一致。
+
 ## 2026-09-01 — 重命名为 `js-coding-style` 并扩充覆盖面
 
 为避免与 skills 生态中的同名技能冲突,将技能从 `javascript` 重命名为 `js-coding-style`,并补齐评审发现的覆盖缺口:异步函数命名、常量、文件命名。删除冗余的 Preferences 一节,并说明入口函数置顶约定的意图。

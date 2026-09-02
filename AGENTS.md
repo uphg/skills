@@ -14,6 +14,7 @@ skills/
     SKILL.md              # English skill definition (required)
     GENERATION.md         # Provenance & generation metadata
     CHANGES.md            # Modification changelog (English)
+    evals.json            # Optional: 2-3 test prompts + expectations (skill-dev Step 5)
     references/           # Optional: detailed reference documents
       ...
 skills-zh/
@@ -77,6 +78,8 @@ Key formatting conventions:
 - Use **bullet lists** for scenario descriptions and constraints.
 - Keep front matter `description` concise — it determines when the skill is activated.
 
+**Reference-style skills** (quick-lookup skills such as `vue-tsx`) may replace the Workflow skeleton with topic tables plus `references/` pointers, as long as triggering info stays in the frontmatter `description`.
+
 ## Naming Conventions
 
 - **Skill directories**: `kebab-case` (e.g., `vue-tsx`, `find-skills`)
@@ -105,6 +108,7 @@ Skills are loaded on-demand — the agent sees only the skill name and descripti
    - `GENERATION.md` (metadata: source, git SHA, generation date)
    - `CHANGES.md` (changelog in Chinese)
    - `references/` (optional, for supplementary docs)
+   - `evals.json` (optional but recommended: 2–3 realistic test prompts with `expected_output` and `expectations`, see skill-dev Step 5)
 2. Create `skills-zh/<skill-name>/` with:
    - `SKILL.zh.md` (Chinese, structurally identical to the English version)
 3. Update `README.md` and `README.zh.md` with the new skill entry and install command.
@@ -131,10 +135,14 @@ Line counts and section numbers should match.
 
 | Skill | Description | Directory |
 |---|---|---|
-| vue-tsx | Vue 3 Composition API + TSX development | `skills/vue-tsx/` |
-| fsd | Feature-Sliced Design frontend architecture | `skills/fsd/` |
-| vue-component-authoring | Vue component library authoring conventions | `skills/vue-component-authoring/` |
 | skill-dev | Skill pack authoring methodology (structure, description optimization, evals, review checklist) | `skills/skill-dev/` |
+| fsd | Feature-Sliced Design frontend architecture | `skills/fsd/` |
+| frontend-arch | Frontend architecture principles + incremental restructuring playbook | `skills/frontend-arch/` |
+| imperative-commits | Git commit titles in imperative mood, enforced uniformly | `skills/imperative-commits/` |
+| js-coding-style | JavaScript coding style: declarations, call order, naming patterns | `skills/js-coding-style/` |
+| markdown-style | Markdown formatting & typography (CJK-aware) | `skills/markdown-style/` |
+| vue-component-authoring | Vue component library authoring conventions | `skills/vue-component-authoring/` |
+| vue-tsx | Vue 3 Composition API + TSX development | `skills/vue-tsx/` |
 
 ## Build / Test / Lint
 

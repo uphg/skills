@@ -1,0 +1,28 @@
+{
+  "skill_name": "vue-component-authoring",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "为我们的组件库新增一个 Dialog 组件（defineComponent + TSX）：支持 title 插槽、size 属性（sm/md/lg）、confirm/cancel 事件，调用方既要能监听事件也要能传 onConfirm/onCancel 回调；组件要暴露 open()/close() 给模板 ref 调用；附上 Vitest 单测。",
+      "expected_output": "Standard library layout (component dir + index.ts public API), standalone props const with as const, emits option + emit() dispatch + onConfirm/onCancel callback props, SlotsType-typed slots, expose() + DialogInst interface, Vitest test with @vue/test-utils.",
+      "expectations": [
+        "Props are declared as a standalone const with `as const` and referenced by defineComponent",
+        "confirm/cancel are declared via emits and dispatched via emit(); the component also accepts onConfirm/onCancel callback props",
+        "Slots are typed with SlotsType (title slot)",
+        "open()/close() are exposed via expose() and a matching DialogInst (or similarly named) interface is exported",
+        "A Vitest test using @vue/test-utils is included (mounts the component, triggers confirm, asserts emitted events / callback invocation)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "给组件库写一个 Tooltip 组件（defineComponent + TSX）：挂载后监听全局 click 事件来关闭弹层，组件卸载时要移除监听。按我们组件库的副作用清理规范来写。",
+      "expected_output": "A cleanup function named cleanupXxx (e.g., cleanupGlobalClick) that removes the listener, registered in onBeforeUnmount; per the library's side-effect cleanup convention.",
+      "expectations": [
+        "Uses defineComponent + TSX",
+        "Registers a global click listener to dismiss the tooltip",
+        "Defines a cleanup function named with the cleanupXxx pattern (e.g., cleanupGlobalClick)",
+        "The cleanup runs in onBeforeUnmount (or equivalent unmount hook)"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "skill_name": "vue-tsx",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "把我们项目里的这个 SFC 组件改写成 defineComponent + TSX 写法：它有一个 count 的 props（默认 0），点击按钮时 emit increment 事件，模板里用 v-if/v-for 渲染一个列表。给出改写后的完整组件。",
+      "expected_output": "defineComponent() + setup() returning a render function/JSX; props declared with type + default; emits declared and dispatched via emit(); no <script setup> remains.",
+      "expectations": [
+        "Component uses defineComponent() from 'vue' with a setup() function returning JSX / a render function",
+        "No <script setup> or SFC template remains — the output is TSX",
+        "Props are declared with explicit types (type + default)",
+        "The increment event is declared in emits and dispatched via emit('increment')"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "写一个 TSX 的搜索输入组件：输入时防抖 300ms 后 emit search 事件，组件卸载时要清理定时器；用 watch 或 watchEffect 实现都可以。",
+      "expected_output": "defineComponent + TSX; watcher (watch or watchEffect) with a 300ms debounce; cleanup in onUnmounted/onWatcherCleanup; emits declared.",
+      "expectations": [
+        "Uses defineComponent + TSX",
+        "Debounces the input by ~300ms before emitting search",
+        "Cleans up the timer/watcher on unmount (onUnmounted / onBeforeUnmount / watch cleanup)",
+        "The search event is declared in emits and dispatched via emit('search')"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "写一个 TSX 的表格组件：接收 1 万行的数据 props，只读展示，行内不需要编辑；表头配置和行数据都会变化。注意性能，并说明你为什么这样选响应式 API。",
+      "expected_output": "Avoids deep-reactive wrappers for the large read-only data (props directly, or shallowRef/markRaw for local copies), with a stated performance rationale.",
+      "expectations": [
+        "Uses defineComponent + TSX",
+        "Avoids unnecessary deep reactivity for the large read-only list (uses props directly, shallowRef, or markRaw)",
+        "Briefly explains the performance rationale for choosing shallow reactivity"
+      ]
+    }
+  ]
+}

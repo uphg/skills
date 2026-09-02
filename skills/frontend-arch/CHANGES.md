@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-09-02 — Added expectations to evals.json
+
+Each eval in the existing evals.json now carries an `expectations` array (verifiable statements) per the skill-creator schema, enabling automated grading and benchmark runs. Prompts and `expected_output` unchanged.
+
 ## 2026-08-26
 
 ### Renamed to `frontend-arch`

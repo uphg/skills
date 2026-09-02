@@ -1,6 +1,6 @@
 ---
 name: vue-component-authoring
-description: "Author reusable Vue 3 components for a component library using defineComponent + TSX. Use when building, reviewing, or refactoring library components (Button, Input, Dialog, Select, etc.), designing their public API — props/emits/slots/expose design, emits option + emit() dispatch with callback props, SlotsType typing, expose + XxxInst interfaces — or organizing component directories and tests (Vitest + @vue/test-utils). Not for one-off application components (use vue-tsx) or styling/theme decisions."
+description: "Author reusable Vue 3 components for a component library using defineComponent + TSX. Use when building, reviewing, or refactoring library components (Button, Input, Dialog, Select, etc.), designing their public API — props/emits/slots/expose design, emits option + emit() dispatch with callback props, SlotsType typing, expose + XxxInst interfaces — managing side-effect cleanup (cleanupXxx + onBeforeUnmount) and attrs passthrough (inheritAttrs, root-element merging) or SSR compatibility, or organizing component directories and tests (Vitest + @vue/test-utils). Not for one-off application components (use vue-tsx) or styling/theme decisions."
 ---
 
 # Vue Component Library Style Guide

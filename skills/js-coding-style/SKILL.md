@@ -3,7 +3,7 @@ name: js-coding-style
 description: "Apply JavaScript coding style conventions: prefer function declarations over const arrow functions, order functions by call sequence, name event handlers on[Event], data transformers to/parse/convert, async functions with an Async suffix, API requests as api+verb, persistent storage read/write, cache access get/set, constants UPPER_SNAKE_CASE, and booleans with is/has prefixes. Use when writing or reviewing JavaScript code, naming a function, variable, constant, or file (\"what should I call this handler?\"), or setting team coding standards. Not for TypeScript type-level design or framework-specific component conventions."
 metadata:
   author: LvHeng
-  version: "2026.9.1"
+  version: "2026.9.2"
   source: Generated from src/javascript/AGENT.md
 ---
 
@@ -21,7 +21,9 @@ Use this skill when:
 - Setting or enforcing JavaScript coding standards
 - Refactoring to improve naming clarity
 
-## Function Declaration Style
+## Function Structure
+
+### Declaration
 
 Always use `function` keyword declarations. Do not use arrow functions assigned to `const`.
 
@@ -33,7 +35,7 @@ function fn() {}
 const fn = () => {}
 ```
 
-## Function Declaration Order
+### Call Order
 
 Call the entry function at the top, then define functions in the same order they are called.
 
@@ -51,58 +53,30 @@ function readConfig() { }
 function fetchData() { }
 ```
 
-## Function Naming Conventions
+## Naming Conventions
 
-### Event Handlers
+### Functions
 
-Always use `on[Event]` format for event handler functions.
+Pick a naming pattern by what the function does:
 
-```javascript
-function onClick() {}
-function onSubmit() {}
-function onButtonClick() {}
-```
-
-### Data Transformation Functions
-
-- Type conversion — `to` + Type: `toNumber()`, `toInt()`, `toPercentage()`
-- String parsing — `parse` + Type: `parseInt()`, `parseDate()`
-- Complex conversion — `convert` + Pattern: `convertToPascalCase(str)`, `convertUnits(value, from, to)`
-
-### Async Functions
-
-Append `Async` to any function that returns a Promise. The verb states what is done; the suffix tells the caller to `await` it.
-
-```javascript
-function initSettingsAsync() {}
-function loadLocaleAsync() {}
-```
-
-Network / API requests use the `api` prefix + verb instead, and do not take the `Async` suffix — `api` already implies a request:
-
-```javascript
-function apiGetUser() {}
-function apiDeleteOrder() {}
-```
-
-- Do not mix the two — no `apiGetUserAsync`
-- Do not use a prefix in place of the suffix — no `asyncFetch`, `doRequest`
-
-### Storage & Cache Access
-
-Choose the verb by where the data lives:
-
-| Data location | Verb | Examples |
+| Scenario | Pattern | Examples |
 |---|---|---|
-| Persistent storage (localStorage, file, DB) | `read` / `write` | `readSettingsFromStorage()`, `writeSettingsToStorage()` |
+| Event handler | `on[Event]` | `onClick()`, `onSubmit()`, `onButtonClick()` |
+| Type conversion | `to` + Type | `toNumber()`, `toInt()`, `toPercentage()` |
+| String parsing | `parse` + Type | `parseInt()`, `parseDate()` |
+| Complex conversion | `convert` + Pattern | `convertToPascalCase(str)`, `convertUnits(value, from, to)` |
+| Async function | verb + `Async` | `initSettingsAsync()`, `loadLocaleAsync()` |
+| API request | `api` + verb | `apiGetUser()`, `apiDeleteOrder()` |
+| Persistent storage | `read` / `write` | `readSettingsFromStorage()`, `writeSettingsToStorage()` |
 | In-memory cache, app state | `get` / `set` | `getCachedUser()`, `setCachedUser()` |
 
-### Constants
+Disambiguation rules:
 
-- Module-level immutable values — `UPPER_SNAKE_CASE`: `MAX_RETRY_COUNT`, `DEFAULT_TIMEOUT`
-- Function-scoped constants and all variables — lowerCamelCase: `maxRetries`
+- `Async` marks any function that returns a Promise — the verb states what is done; the suffix tells the caller to `await` it.
+- `api` already implies a network request, so API functions use `api` + verb and never take the `Async` suffix — no `apiGetUserAsync`, and no generic prefix in place of the suffix (`asyncFetch`, `doRequest`).
+- Choose `read`/`write` vs `get`/`set` by where the data lives: persistent storage (localStorage, file, DB) uses `read`/`write`; in-memory cache and app state use `get`/`set`.
 
-## Variable Naming
+### Variables & Constants
 
 Use prefixes and naming patterns to make variable types and intent clear:
 
@@ -113,11 +87,18 @@ Use prefixes and naming patterns to make variable types and intent clear:
 | Array | Plural noun | `users`, `items`, `configs` | Plural form signals a collection |
 | Single Object | Singular noun | `user`, `item`, `config` | Singular form signals a single entity |
 
-## File Naming
+Constants casing:
+
+| Kind | Casing | Examples |
+|---|---|---|
+| Module-level immutable values | `UPPER_SNAKE_CASE` | `MAX_RETRY_COUNT`, `DEFAULT_TIMEOUT` |
+| Function-scoped constants and all variables | lowerCamelCase | `maxRetries` |
+
+### Files
 
 Use `kebab-case` for file and directory names: `api-user.js`, `date-utils.js`.
 
-## Names to Avoid
+### Names to Avoid
 
 - ❌ `change()` — too vague
 - ❌ `process()` — unclear what is done

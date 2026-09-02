@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-09-02 — Added evals.json
+
+Added 3 test prompts with `expected_output` and `expectations` per skill-dev Step 5 and the skill-creator schema (repo audit: eval coverage). Coverage: declaration style + call order, naming review, api-vs-Async disambiguation. No SKILL.md content changed.
+
+## 2026-09-02 — Restructured: separated code structure from naming
+
+Reorganized the section layout around the document's two underlying concerns — how code is structured and how things are named — after review found misplaced and overlapping sections. All rules, examples, and caveats are preserved; this is an information-architecture change only.
+
+### Changes
+
+### 1. `SKILL.md` → section restructure
+
+- Merged the two near-identical top-level headings `Function Declaration Style` and `Function Declaration Order` into one `Function Structure` section with `Declaration` and `Call Order` subsections.
+- Introduced a single `Naming Conventions` umbrella:
+  - Collapsed the four function-naming subsections (event handlers, data transformation, async functions, storage & cache access) into one quick-reference table (`Scenario | Pattern | Examples`) plus three disambiguation bullets (`Async` suffix semantics; `api` + verb never combined with `Async`, no `asyncFetch`/`doRequest`; `read`/`write` vs `get`/`set` chosen by data location).
+  - Moved `Constants` out of "Function Naming Conventions" — constants are not functions — and merged it with `Variable Naming` into `Variables & Constants`.
+  - Moved top-level `File Naming` and `Names to Avoid` under `Naming Conventions`.
+- Top-level sections reduced from 9 to 4: When to Use This Skill → Function Structure → Naming Conventions → Core Principle.
+- Kept `to` / `parse` / `convert` as three distinct table rows to preserve the type-conversion / string-parsing / complex-conversion distinction.
+- Frontmatter `metadata.version` → `2026.9.2`.
+
+### 2. `SKILL.zh.md` → synced
+
+Structurally identical Chinese version with the same restructure.
+
 ## 2026-09-01 — Renamed to `js-coding-style` and expanded coverage
 
 Renamed the skill from `javascript` to `js-coding-style` to avoid name collisions in the skills ecosystem, and filled the coverage gaps found in review: async function naming, constants, and file naming. Removed the redundant Preferences section and clarified the intent behind the entry-function-top convention.

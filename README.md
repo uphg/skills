@@ -22,6 +22,14 @@ Frontend architecture design following Feature-Sliced Design (FSD) methodology.
 npx skills add https://github.com/xypur/skills --skill fsd
 ```
 
+### frontend-arch
+
+Frontend architecture methodology in four principles: downward-only dependencies, explicit public API per module, colocate-first-promote-on-second-use, and domain-grouped purpose-named folders. Includes an incremental restructuring playbook for legacy codebases and an audit checklist.
+
+```bash
+npx skills add https://github.com/xypur/skills --skill frontend-arch
+```
+
 ### vue-tsx
 
 Vue 3 development using `defineComponent()` + `.tsx` (Composition API with TSX render functions).
@@ -74,6 +82,7 @@ skills/
     ├── SKILL.md                          # Main skill definition & coding preferences
     ├── GENERATION.md                     # Provenance & generation metadata
     ├── CHANGES.md                        # Modification changelog
+    ├── evals.json                        # Optional: test prompts + expectations
     └── references/                       # Reference documents
         └── ...
 ```

@@ -4,17 +4,31 @@
     {
       "id": 1,
       "prompt": "I just fixed a race condition in the cache layer, please commit my changes with a proper message.",
-      "expected_output": "Agent writes a commit whose title is imperative, capitalized, without a trailing period (e.g., `Fix cache race condition`) and passes the \"If applied, this commit will ___\" test."
+      "expected_output": "Agent writes a commit whose title is imperative, capitalized, without a trailing period (e.g., `Fix cache race condition`) and passes the \"If applied, this commit will ___\" test.",
+      "expectations": [
+        "Commit title uses imperative mood with a capitalized base verb (e.g., 'Fix cache race condition')",
+        "Title has no trailing period and passes the 'If applied, this commit will ___' test"
+      ]
     },
     {
       "id": 2,
       "prompt": "Review these commit messages from my teammate: `refactor: extract parser module`, `Updated the docs`, `Fix payment retry bug.` Which ones are fine?",
-      "expected_output": "`Updated the docs` flagged for past tense; `Fix payment retry bug.` flagged for trailing period; `refactor: extract parser module` flagged as Conventional Commits style with suggested rewrite `Extract parser module`. The agent enforces the imperative convention uniformly instead of accepting non-conforming styles."
+      "expected_output": "`Updated the docs` flagged for past tense; `Fix payment retry bug.` flagged for trailing period; `refactor: extract parser module` flagged as Conventional Commits style with suggested rewrite `Extract parser module`. The agent enforces the imperative convention uniformly instead of accepting non-conforming styles.",
+      "expectations": [
+        "Flags 'Updated the docs' as non-conforming (past tense)",
+        "Flags 'Fix payment retry bug.' as non-conforming (trailing period)",
+        "Flags 'refactor: extract parser module' as Conventional Commits style and suggests the rewrite 'Extract parser module'",
+        "Applies the imperative convention uniformly instead of accepting historical styles"
+      ]
     },
     {
       "id": 3,
       "prompt": "Our last 50 commits all use Conventional Commits (`feat: ...`, `fix: ...`). We're switching to plain imperative style from now on. Commit my staged changes.",
-      "expected_output": "Agent does not copy the historical convention; it writes an imperative title (e.g., `Add retry logic`), capitalized, no trailing period, demonstrating uniform enforcement regardless of repository history."
+      "expected_output": "Agent does not copy the historical convention; it writes an imperative title (e.g., `Add retry logic`), capitalized, no trailing period, demonstrating uniform enforcement regardless of repository history.",
+      "expectations": [
+        "Commit title is imperative, capitalized, and has no trailing period",
+        "Does not copy the repository's historical Conventional Commits style (no feat:/fix: prefix)"
+      ]
     }
   ]
 }

@@ -1,5 +1,9 @@
 # 更新日志
 
+## 2026-09-02 — 为 evals.json 补充 expectations
+
+现有 evals.json 的每条 eval 均补充 `expectations` 数组(可验证陈述),符合 skill-creator schema,可支持自动评分与基准运行。提示词与 expected_output 未改动。
+
 ## 2026-08-26
 
 ### 重命名为 `frontend-arch`

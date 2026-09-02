@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-09-02 — Slimmed Preferences; added evals.json
+
+- Removed the `Preferences` section: "Prefer TypeScript", "prefer defineComponent + .tsx", and "always Composition API" duplicated the opening blockquote; the two unique rules (prefer `shallowRef` when deep reactivity is not needed, avoid Reactive Props Destructure) moved into the blockquote. Mirrors the earlier js-coding-style Preferences cleanup.
+- Added evals.json: 3 test prompts (SFC → TSX conversion, debounced search with watcher cleanup, shallowRef performance choice) with `expectations`.
+- Frontmatter `metadata.version` → `2026.9.2`.
+
 ## 2026-08-25 — Description rewrite
 
 Reworked the front-matter description following the example-skills benchmark: verb-led opening, concrete trigger scenarios, explicit negative boundary, and cross-reference to the sibling skill. No skill content changed.

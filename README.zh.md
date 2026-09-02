@@ -22,6 +22,14 @@ npx skills add https://github.com/xypur/skills --skill skill-dev
 npx skills add https://github.com/xypur/skills --skill fsd
 ```
 
+### frontend-arch
+
+前端架构方法论，凝练为四条原则：依赖只向下、模块显式公共 API、先同位置后提升、按领域分组命名。附增量式旧项目重构指南与架构审查清单。
+
+```bash
+npx skills add https://github.com/xypur/skills --skill frontend-arch
+```
+
 ### vue-tsx
 
 使用 `defineComponent()` + `.tsx`（Composition API + TSX 渲染函数）的 Vue 3 开发。
@@ -74,6 +82,7 @@ skills/
     ├── SKILL.md                          # 主要技能定义与编码偏好
     ├── GENERATION.md                     # 来源与生成元数据
     ├── CHANGES.md                        # 修改日志
+    ├── evals.json                        # 可选：测试提示词与预期结果
     └── references/                       # 参考文档
         └── ...
 ```
