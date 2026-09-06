@@ -1,5 +1,27 @@
 # 修改记录
 
+## 2026-09-06 — 重写数据转换命名:仅保留 `to` / `from` / `as`
+
+数据转换命名模块改为三条按返回值类型变化区分的方向性规则,删除 `parse`、`convert` 两套转换命名模式。
+
+### 变更清单
+
+### 1. `SKILL.md` → 规则替换
+
+- 类型转换为三行,按返回值类型语义区分:
+  - `to` + 目标——变成目标类型/实体(返回值类型改变):`toNumber()`、`toInt()`、`toUserVO()`。
+  - `from` + 源——从源格式生成数据(反解):`fromUnixTime()`、`fromBase64()`。
+  - `as` + 格式——改变展示格式(返回值类型不变):`asCamelCase()`、`asPercent()`。
+- 删除 `parse` + 类型、`convert` + 模式两行——数据转换命名只用 `to` / `from` / `as`。
+- 新增消歧规则:以返回值类型变化为判别依据,数据转换命名禁用 `parse`/`convert`。
+- frontmatter description 锚点更新:数据转换 `to/parse/convert` → `to/from/as`;`metadata.version` → `2026.9.3`。
+
+### 2. `SKILL.zh.md` → 同步,结构一致
+
+### 3. `evals.json` → eval 2 更新
+
+字符串转数字的期望改为 `to`/`from` 命名(如 `toNumber` / `fromPercent`),不再接受 `to`/`parse`/`convert` 模式。
+
 ## 2026-09-02 — 新增 evals.json
 
 按 skill-dev Step 5 与 skill-creator schema 新增 3 条测试提示词(含 expected_output 与 expectations)。覆盖:声明方式与调用顺序、命名审查、api 与 Async 消歧。SKILL.zh.md 内容无改动。

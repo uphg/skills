@@ -17,10 +17,10 @@
     {
       "id": 2,
       "prompt": "帮我把这个旧模块的命名整理成团队规范，只改名字和必要的声明方式，逻辑不要动：\n\nconst handleSubmit = () => { saveOrder(); };\nconst processData = (str) => { /* 把 '12.3%' 这类字符串转成数字 12.3 */ };\nasync function getUser() { const res = await fetch('/api/user'); return res.json(); }\nconst max = 10;\nlet isloading = true;",
-      "expected_output": "Handler stays on[Event] but as a function declaration (onSubmit); processData becomes a to/parse/convert name (e.g., toNumber); getUser becomes apiGetUser (api + verb, no Async); max becomes UPPER_SNAKE_CASE; isloading becomes isLoading.",
+      "expected_output": "Handler stays on[Event] but as a function declaration (onSubmit); processData becomes a to/from/as name (e.g., toNumber / fromPercent); getUser becomes apiGetUser (api + verb, no Async); max becomes UPPER_SNAKE_CASE; isloading becomes isLoading.",
       "expectations": [
         "Event handler renamed to on[Event] format (e.g., onSubmit) and declared with the `function` keyword",
-        "The string-to-number conversion function uses a to/parse/convert pattern (e.g., toNumber / parsePercent / convertToNumber)",
+        "The string-to-number conversion function uses a to/from/as pattern (e.g., toNumber / fromPercent) — NOT parseXxx or convertToNumber",
         "The API request function is renamed to api + verb (e.g., apiGetUser) — NOT getUserAsync or asyncFetch",
         "The constant is renamed to UPPER_SNAKE_CASE (e.g., MAX_ORDERS / MAX_LIMIT)",
         "The boolean variable is renamed with the is prefix and correct camelCase (isLoading)"

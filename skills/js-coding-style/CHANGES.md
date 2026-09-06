@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-09-06 — Reworked data-conversion naming: `to` / `from` / `as` only
+
+Replaced the data-conversion naming module with three direction rules chosen by what happens to the return type. Removed `parse` and `convert` as conversion naming patterns.
+
+### Changes
+
+### 1. `SKILL.md` → rules replaced
+
+- Type conversion is now three rows driven by return-type semantics:
+  - `to` + Target — becomes the target type/entity (return type changes): `toNumber()`, `toInt()`, `toUserVO()`.
+  - `from` + Source — builds data from a source format (reverse-deserialization): `fromUnixTime()`, `fromBase64()`.
+  - `as` + Format — changes the display format (return type unchanged): `asCamelCase()`, `asPercent()`.
+- Removed the `parse` + Type and `convert` + Pattern rows — data transformation naming uses only `to` / `from` / `as`.
+- New disambiguation bullet spelling out the return-type discriminator and forbidding `parse`/`convert` for transformation names.
+- Frontmatter description anchor updated: data transformers `to/parse/convert` → `to/from/as`; `metadata.version` → `2026.9.3`.
+
+### 2. `SKILL.zh.md` → synced with identical structure
+
+### 3. `evals.json` → eval 2 updated
+
+The string→number conversion expectation now requires a `to`/`from` name (e.g., `toNumber` / `fromPercent`) instead of a `to`/`parse`/`convert` pattern.
+
 ## 2026-09-02 — Added evals.json
 
 Added 3 test prompts with `expected_output` and `expectations` per skill-dev Step 5 and the skill-creator schema (repo audit: eval coverage). Coverage: declaration style + call order, naming review, api-vs-Async disambiguation. No SKILL.md content changed.
