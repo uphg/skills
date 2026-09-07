@@ -5,7 +5,8 @@ example
 .pi/
 
 # skill-creator eval workspaces
-*-workspace/
+skills/js-coding-style-workspace/
+skills/imperative-commits-workspace/
 
 # local agent workspace
 .agents/

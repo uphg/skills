@@ -1,17 +1,11 @@
 {
   "version": 1,
   "skills": {
-    "skill-creator": {
-      "source": "anthropics/skills",
+    "skill-forge": {
+      "source": "xypur/skills-4k",
       "sourceType": "github",
-      "skillPath": "skills/skill-creator/SKILL.md",
-      "computedHash": "5ea13a6d9f0d4bb694405d79acd00cadec0d21bb138c4dd10fcf3c500cb835c2"
-    },
-    "skill-dev": {
-      "source": "xypur/skills",
-      "sourceType": "github",
-      "skillPath": "skills/skill-dev/SKILL.md",
-      "computedHash": "590135b21c4ba885f48d9d2700b71ce15e0b277ee5c6b5aa9cfc3d9f95b8465a"
+      "skillPath": "skills/skill-forge/SKILL.md",
+      "computedHash": "93a42389adb185eaccca7d2431ede60928a37a2c46b124720a337cca751ca643"
     }
   }
 }
