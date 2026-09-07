@@ -3,7 +3,7 @@ name: js-coding-style
 description: "应用 JavaScript 编码风格约定:优先使用 function 声明而非 const 箭头函数,按调用顺序组织函数,事件处理器用 on[Event] 命名,数据转换用 to/from/as,异步函数加 Async 后缀,API 请求用 api+动词,持久化存储用 read/write,缓存访问用 get/set,常量用 UPPER_SNAKE_CASE,布尔值用 is/has 前缀。在编写或审查 JavaScript 代码、为函数/变量/常量/文件命名(\"这个 handler 该叫什么?\"),或制定团队编码规范时使用。不适用于 TypeScript 类型层设计或框架特定的组件约定。"
 metadata:
   author: LvHeng
-  version: "2026.9.3"
+  version: "2026.9.4"
   source: Generated from src/javascript/AGENT.md
 ---
 
@@ -59,23 +59,15 @@ function fetchData() { }
 
 按函数的用途选择命名模式:
 
-| 场景 | 模式 | 示例 |
-|---|---|---|
-| 事件处理器 | `on[Event]` | `onClick()`、`onSubmit()`、`onButtonClick()` |
-| 变成目标类型/实体(返回值类型改变) | `to` + 目标 | `toNumber()`、`toInt()`、`toUserVO()` |
-| 从源格式生成数据(反解) | `from` + 源 | `fromUnixTime()`、`fromBase64()` |
-| 改变展示格式(返回值类型不变) | `as` + 格式 | `asCamelCase()`、`asPercent()` |
-| 异步函数 | 动词 + `Async` | `initSettingsAsync()`、`loadLocaleAsync()` |
-| API 请求 | `api` + 动词 | `apiGetUser()`、`apiDeleteOrder()` |
-| 持久化存储 | `read` / `write` | `readSettingsFromStorage()`、`writeSettingsToStorage()` |
-| 内存缓存、应用状态 | `get` / `set` | `getCachedUser()`、`setCachedUser()` |
-
-消歧规则:
-
-- `to` / `from` / `as` 按返回值类型的变化选择:`to` + 目标变成目标类型/实体(返回值类型改变),`from` + 源从源格式反解生成数据,`as` + 格式仅改变展示形式(返回值类型不变)。数据转换命名不用 `parse`、`convert`。
-- `Async` 标记任何返回 Promise 的函数——动词说明"做什么",后缀提醒调用方需要 `await`。
-- `api` 本身已隐含网络请求,API 请求用 `api` + 动词,且永不加 `Async` 后缀——不用 `apiGetUserAsync`,也不用泛用前缀替代后缀(`asyncFetch`、`doRequest`)。
-- `read`/`write` 与 `get`/`set` 按数据所在位置选择:持久化存储(localStorage、文件、DB)用 `read`/`write`,内存缓存与应用状态用 `get`/`set`。
+- **类型转换**——三个前缀,按返回值类型的变化选择。数据转换命名禁用 `parse`/`convert`:
+  - `to` + 目标:返回值类型改变,变成目标类型/实体 → `toNumber()`、`toInt()`、`toUserVO()`
+  - `from` + 源:从源格式反解生成数据 → `fromUnixTime()`、`fromBase64()`
+  - `as` + 格式:仅改变展示形式,返回值类型不变 → `asCamelCase()`、`asPercent()`
+- **事件处理器**:`on[Event]` → `onClick()`、`onSubmit()`、`onButtonClick()`
+- **异步函数**:动词 + `Async` —— 标记任何返回 Promise 的函数,动词说明"做什么",后缀提醒调用方需要 `await` → `initSettingsAsync()`、`loadLocaleAsync()`
+- **API 请求**:`api` + 动词 —— `api` 本身已隐含网络请求,永不加 `Async` 后缀(不用 `apiGetUserAsync`),也不用泛用前缀替代后缀(`asyncFetch`、`doRequest`) → `apiGetUser()`、`apiDeleteOrder()`
+- **持久化存储**:`read` / `write` —— 数据位于 localStorage、文件、DB → `readSettingsFromStorage()`、`writeSettingsToStorage()`
+- **内存缓存、应用状态**:`get` / `set` → `getCachedUser()`、`setCachedUser()`
 
 ### 变量与常量
 

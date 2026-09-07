@@ -3,7 +3,7 @@ name: js-coding-style
 description: "Apply JavaScript coding style conventions: prefer function declarations over const arrow functions, order functions by call sequence, name event handlers on[Event], data transformers to/from/as, async functions with an Async suffix, API requests as api+verb, persistent storage read/write, cache access get/set, constants UPPER_SNAKE_CASE, and booleans with is/has prefixes. Use when writing or reviewing JavaScript code, naming a function, variable, constant, or file (\"what should I call this handler?\"), or setting team coding standards. Not for TypeScript type-level design or framework-specific component conventions."
 metadata:
   author: LvHeng
-  version: "2026.9.3"
+  version: "2026.9.4"
   source: Generated from src/javascript/AGENT.md
 ---
 
@@ -59,23 +59,15 @@ function fetchData() { }
 
 Pick a naming pattern by what the function does:
 
-| Scenario | Pattern | Examples |
-|---|---|---|
-| Event handler | `on[Event]` | `onClick()`, `onSubmit()`, `onButtonClick()` |
-| Type/entity change (return type changes) | `to` + Target | `toNumber()`, `toInt()`, `toUserVO()` |
-| Build from a source format | `from` + Source | `fromUnixTime()`, `fromBase64()` |
-| Change display format (return type unchanged) | `as` + Format | `asCamelCase()`, `asPercent()` |
-| Async function | verb + `Async` | `initSettingsAsync()`, `loadLocaleAsync()` |
-| API request | `api` + verb | `apiGetUser()`, `apiDeleteOrder()` |
-| Persistent storage | `read` / `write` | `readSettingsFromStorage()`, `writeSettingsToStorage()` |
-| In-memory cache, app state | `get` / `set` | `getCachedUser()`, `setCachedUser()` |
-
-Disambiguation rules:
-
-- `to` / `from` / `as` are chosen by what happens to the return type: `to` + Target becomes the target type/entity (return type changes), `from` + Source builds data by reverse-parsing a source format, `as` + Format only changes the presentation (return type unchanged). Never use `parse` or `convert` for data transformation naming.
-- `Async` marks any function that returns a Promise — the verb states what is done; the suffix tells the caller to `await` it.
-- `api` already implies a network request, so API functions use `api` + verb and never take the `Async` suffix — no `apiGetUserAsync`, and no generic prefix in place of the suffix (`asyncFetch`, `doRequest`).
-- Choose `read`/`write` vs `get`/`set` by where the data lives: persistent storage (localStorage, file, DB) uses `read`/`write`; in-memory cache and app state use `get`/`set`.
+- **Type conversion** — three prefixes, chosen by what happens to the return type. Never use `parse` or `convert` for data transformation naming:
+  - `to` + Target: return type changes — becomes the target type/entity → `toNumber()`, `toInt()`, `toUserVO()`
+  - `from` + Source: builds data by reverse-parsing a source format → `fromUnixTime()`, `fromBase64()`
+  - `as` + Format: changes presentation only — return type unchanged → `asCamelCase()`, `asPercent()`
+- **Event handler**: `on[Event]` → `onClick()`, `onSubmit()`, `onButtonClick()`
+- **Async function**: verb + `Async` — marks any function that returns a Promise; the verb states what is done, the suffix tells the caller to `await` it → `initSettingsAsync()`, `loadLocaleAsync()`
+- **API request**: `api` + verb — `api` already implies a network request, so never take the `Async` suffix (no `apiGetUserAsync`), and no generic prefix in place of the suffix (`asyncFetch`, `doRequest`) → `apiGetUser()`, `apiDeleteOrder()`
+- **Persistent storage**: `read` / `write` — the data lives in localStorage, file, or DB → `readSettingsFromStorage()`, `writeSettingsToStorage()`
+- **In-memory cache, app state**: `get` / `set` → `getCachedUser()`, `setCachedUser()`
 
 ### Variables & Constants
 

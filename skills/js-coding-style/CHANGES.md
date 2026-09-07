@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-09-07 — Restructured function naming into a grouped list
+
+Replaced the flat Functions quick-reference table plus separate disambiguation bullets with a single nested unordered list. The `to` / `from` / `as` prefixes now sit under one "Type conversion" parent item, making the grouping explicit; each sibling pattern carries its own disambiguation rule inline, removing the duplication between the table and the rules list. Information-architecture change only — all rules, examples, and prohibitions preserved.
+
+### Changes
+
+### 1. `SKILL.md` → Functions section restructured
+
+- Replaced the `Scenario | Pattern | Examples` table and the four disambiguation bullets with one nested unordered list.
+- `to` / `from` / `as` grouped under a single **Type conversion** parent item with three sub-bullets, each carrying pattern + return-type semantics + examples; the `parse`/`convert` prohibition moved into the parent item.
+- Remaining patterns (event handler, Async, api, read/write, get/set) became sibling bullets in the original order; their disambiguation rules (Async semantics, api never + Async, storage-location discriminator) merged inline into each bullet.
+- Frontmatter `metadata.version` → `2026.9.4`.
+
+### 2. `SKILL.zh.md` → synced, structurally identical
+
 ## 2026-09-06 — Reworked data-conversion naming: `to` / `from` / `as` only
 
 Replaced the data-conversion naming module with three direction rules chosen by what happens to the return type. Removed `parse` and `convert` as conversion naming patterns.
