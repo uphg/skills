@@ -4,7 +4,7 @@ example
 .claude/
 .pi/
 
-# skill-creator eval workspaces
+# skill-forge eval workspaces
 skills/js-coding-style-workspace/
 skills/imperative-commits-workspace/
 

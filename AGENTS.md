@@ -14,7 +14,7 @@ skills/
     SKILL.md              # English skill definition (required)
     GENERATION.md         # Provenance & generation metadata
     CHANGES.md            # Modification changelog (English)
-    evals.json            # Optional: 2-3 test prompts + expectations (skill-dev Step 5)
+    evals.json            # Optional: 2-3 test prompts + expectations (skill-forge Step 5)
     references/           # Optional: detailed reference documents
       ...
 skills-zh/
@@ -101,6 +101,10 @@ Skills are loaded on-demand — the agent sees only the skill name and descripti
 
 ## Working with Skills in This Repo
 
+### Skill Authoring & Validation
+
+When creating, validating, or tuning skill packs, first read `.agents/skills/skill-forge/SKILL.md` and follow its workflow (scaffold → frontmatter → body → evals → package). Repo packaging conventions in this AGENTS.md (directory layout, SKILL format, CHANGES, Chinese/English sync) take precedence over skill-forge defaults where they conflict.
+
 ### Adding a New Skill
 
 1. Create `skills/<skill-name>/` with:
@@ -108,7 +112,7 @@ Skills are loaded on-demand — the agent sees only the skill name and descripti
    - `GENERATION.md` (metadata: source, git SHA, generation date)
    - `CHANGES.md` (changelog in Chinese)
    - `references/` (optional, for supplementary docs)
-   - `evals.json` (optional but recommended: 2–3 realistic test prompts with `expected_output` and `expectations`, see skill-dev Step 5)
+   - `evals.json` (optional but recommended: 2–3 realistic test prompts with `expected_output` and `expectations`, see skill-forge Step 5)
 2. Create `skills-zh/<skill-name>/` with:
    - `SKILL.zh.md` (Chinese, structurally identical to the English version)
 3. Update `README.md` and `README.zh.md` with the new skill entry and install command.
@@ -135,7 +139,6 @@ Line counts and section numbers should match.
 
 | Skill | Description | Directory |
 |---|---|---|
-| skill-dev | Skill pack authoring methodology (structure, description optimization, evals, review checklist) | `skills/skill-dev/` |
 | fsd | Feature-Sliced Design frontend architecture | `skills/fsd/` |
 | frontend-arch | Frontend architecture principles + incremental restructuring playbook | `skills/frontend-arch/` |
 | imperative-commits | Git commit titles in imperative mood, enforced uniformly | `skills/imperative-commits/` |

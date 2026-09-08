@@ -6,14 +6,6 @@ A curated collection of skill packs for AI coding assistants, providing project-
 
 ## Available Skills
 
-### skill-dev
-
-Methodology for creating, reviewing, and improving skill packs: intent capture, package structure (references/, scripts/, assets/), description optimization for triggering, test prompts, quality checklist, and writing-style guidance.
-
-```bash
-npx skills add https://github.com/xypur/skills --skill skill-dev
-```
-
 ### fsd
 
 Frontend architecture design following Feature-Sliced Design (FSD) methodology.
